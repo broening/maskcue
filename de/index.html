@@ -162,17 +162,60 @@
       <p>Du legst Figuren an wie Charaktere: Bild, Name, Stimme. Ein Klick oder ein Hotkey schaltet sie ein. Für den Dämon tiefer und in der Höhle, für den Goblin hoch und frech.</p>
     </div>
 
-    <ol class="weg" aria-label="So läuft deine Stimme durch MaskCue">
-      <li class="weg-ende">Mikrofon</li>
-      <li class="weg-stufe"><span class="karte"><span class="nr">1</span><div><strong>KI-Stimme</strong><span>wahlweise, eine andere Person</span></div></span></li>
-      <li class="weg-stufe"><span class="karte"><span class="nr">2</span><div><strong>Ton</strong><span>Tonhöhe, Klangfarbe, Hell/Dunkel</span></div></span></li>
-      <li class="weg-stufe"><span class="karte"><span class="nr">3</span><div><strong>Umgebung</strong><span>Höhle, Funkgerät, Raumhelm …</span></div></span></li>
-      <li class="weg-ende">Discord, TS, Spiel</li>
-    </ol>
 
-    <figure class="bildschirm">
-      <img src="/assets/img/app-figuren.webp" alt="MaskCue: Seite Figuren mit aufgeklappten Einstellungen für die Figur Dämon" width="1600" height="1000" loading="lazy">
-    </figure>
+    <div class="app-fenster" role="group" aria-label="Vorschau der App: Seite Figuren. Probier die Knöpfe aus.">
+      <div class="app-leiste"><span class="app-punkt"></span><span class="app-chip akzent">Profil FiveM · automatisch</span><span class="app-chip">52 ms</span></div>
+      <div class="app-inhalt">
+        <div class="app-seite" aria-hidden="true"><img src="/assets/img/logo.svg" alt="" width="40" height="40"><span>Übersicht</span><span class="an">Figuren</span><span>Umgebungen</span><span>Sounds</span><span>Aufnahmen</span><span>Hotkeys</span></div>
+        <div class="app-haupt">
+          <div class="app-titel">Figuren<span class="app-knopf voll">+ Neue Figur</span></div>
+          <div class="app-karte" data-verfahren="Schnell">
+            <div class="app-figur-kopf">
+              <img class="app-bild" src="/assets/img/figuren/daemon.webp" alt="" width="46" height="46" loading="lazy">
+              <div class="app-figur-titel"><strong>Dämon</strong><span class="app-chips"><span class="app-chip aus" data-ki-chip>Ohne KI</span><span class="app-chip" data-ton>Schnell · −7 Halbtöne</span><span class="app-chip">Tropfsteinhöhle</span></span></div>
+              <div class="app-knoepfe"><button type="button" class="app-knopf voll" data-einschalten data-an="Aktiv" data-aus="Einschalten">Einschalten</button><button type="button" class="app-knopf tonal" data-einstellen aria-expanded="true">Einstellen</button></div>
+            </div>
+            <div class="app-einstellungen">
+              <div class="app-weg" role="tablist">
+                <span>Mikrofon →</span>
+                <button type="button" role="tab" data-stufe="ki" aria-selected="false"><b>1</b><span>KI-Stimme<small data-ki-wert data-aus-text="Aus" data-an-text="Thorsten">Aus</small></span></button>
+                <button type="button" role="tab" data-stufe="ton" aria-selected="true"><b>2</b><span>Ton<small data-ton>Schnell · −7 Halbtöne</small></span></button>
+                <button type="button" role="tab" data-stufe="umgebung" aria-selected="false"><b>3</b><span>Umgebung<small>Tropfsteinhöhle</small></span></button>
+                <span>→ Ausgang</span>
+              </div>
+              <div class="app-stufe" data-panel="ton">
+                <div class="app-feld"><span>Verfahren</span><span class="app-auswahl">Schnell (ca. 31 ms)</span></div>
+                <label class="app-regler"><span>Tonhöhe <output>−7 Halbtöne</output></span><input type="range" min="-15" max="30" step="1" value="-7" data-einheit=" Halbtöne" data-ziel="ton"></label>
+                <label class="app-regler"><span>Klangfarbe <output>−4 Halbtöne</output></span><input type="range" min="-4" max="12" step="1" value="-4" data-einheit=" Halbtöne"></label>
+                <label class="app-regler"><span>Hell / Dunkel <output>0 dB</output></span><input type="range" min="-6" max="6" step="1" value="0" data-einheit=" dB"></label>
+              </div>
+              <div class="app-stufe" data-panel="ki" hidden>
+                <div class="app-schalter"><span><strong>KI-Stimme</strong><br><span class="app-leise">Macht aus deiner Stimme eine andere Person.</span></span><button type="button" role="switch" aria-checked="false" aria-label="KI-Stimme" data-ki-schalter data-chip-aus="Ohne KI" data-chip-an="Thorsten"></button></div>
+                <div class="app-ganz" data-ki-teil hidden><div class="app-feld"><span>Stimme</span><span class="app-knopf voll" style="justify-self:start">Thorsten</span></div></div>
+              </div>
+              <div class="app-stufe" data-panel="umgebung" hidden>
+                <div class="app-feld"><span>Umgebung</span><span class="app-auswahl">Tropfsteinhöhle</span></div>
+                <label class="app-regler"><span>Stärke für diese Figur <output>70 %</output></span><input type="range" min="0" max="100" step="5" value="70" data-einheit=" %" data-ohne-vorzeichen></label>
+              </div>
+            </div>
+          </div>
+          <div class="app-karte">
+            <div class="app-figur-kopf">
+              <img class="app-bild" src="/assets/img/figuren/kobold.webp" alt="" width="46" height="46" loading="lazy">
+              <div class="app-figur-titel"><strong>Goblin</strong><span class="app-chips"><span class="app-chip aus">Ohne KI</span><span class="app-chip">Schnell · +5 Halbtöne</span><span class="app-chip aus">Keine Umgebung</span></span></div>
+              <div class="app-knoepfe"><button type="button" class="app-knopf voll" data-einschalten data-an="Aktiv" data-aus="Einschalten">Einschalten</button></div>
+            </div>
+          </div>
+          <div class="app-karte">
+            <div class="app-figur-kopf">
+              <img class="app-bild" src="/assets/img/figuren/roboter.webp" alt="" width="46" height="46" loading="lazy">
+              <div class="app-figur-titel"><strong>Cyborg</strong><span class="app-chips"><span class="app-chip aus">Ohne KI</span><span class="app-chip">Schnell · −2 Halbtöne</span><span class="app-chip">Roboter</span></span></div>
+              <div class="app-knoepfe"><button type="button" class="app-knopf voll" data-einschalten data-an="Aktiv" data-aus="Einschalten">Einschalten</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="drei">
       <div>
@@ -211,9 +254,29 @@
         <li><strong>Alles stoppen.</strong> Eine Taste in jedem Profil beendet alle Sounds sofort. Dazu Stumm an/aus und Aufnahme an/aus.</li>
       </ul>
     </div>
-    <figure class="bildschirm schraeg">
-      <img src="/assets/img/app-hotkeys.webp" alt="MaskCue: Seite Hotkeys mit den Profilen FiveM und RedM und Tasten für Sounds" width="1600" height="922" loading="lazy">
-    </figure>
+    <div class="app-fenster" role="group" aria-label="Vorschau der App: Seite Hotkeys. Probier die Profile aus.">
+      <div class="app-leiste"><span class="app-punkt"></span><span class="app-chip akzent">Profil FiveM · automatisch</span><span class="app-chip">52 ms</span></div>
+      <div class="app-inhalt">
+        <div class="app-seite" aria-hidden="true"><img src="/assets/img/logo.svg" alt="" width="40" height="40"><span>Übersicht</span><span>Figuren</span><span>Umgebungen</span><span>Sounds</span><span>Aufnahmen</span><span class="an">Hotkeys</span></div>
+        <div class="app-haupt">
+          <div class="app-titel">Hotkeys</div>
+          <div class="app-karte"><h4>In jedem Profil</h4><div class="app-zeile"><span class="app-taste"><kbd>Pause</kbd></span><span class="app-auswahl">Alles stoppen</span></div></div>
+          <div class="app-reiter" role="tablist">
+            <button type="button" class="app-knopf tonal" role="tab" data-profil="fivem" aria-selected="true">FiveM</button>
+            <button type="button" class="app-knopf tonal" role="tab" data-profil="redm" aria-selected="false">RedM</button>
+            <span class="app-knopf">+ Neues Profil</span>
+          </div>
+          <div class="app-karte app-profil" data-profil="fivem">
+            <span class="app-leise">Gilt, wenn eines dieser Programme im Vordergrund ist.</span><span class="app-chip" style="justify-self:start">FiveM*.exe</span>
+            <div class="app-zeile"><span class="app-taste"><kbd>Num1</kbd></span><span class="app-auswahl">Figur: Dämon</span></div><div class="app-zeile"><span class="app-taste"><kbd>Num2</kbd></span><span class="app-auswahl">Figur: Goblin</span></div><div class="app-zeile"><span class="app-taste"><kbd>Num0</kbd></span><span class="app-auswahl">Normale Stimme</span></div><div class="app-zeile"><span class="app-taste"><kbd>Maus4</kbd></span><span class="app-auswahl">Sound: Applaus</span></div><div class="app-zeile"><span class="app-taste"><kbd>F9</kbd></span><span class="app-auswahl">Aufnahme an/aus</span></div>
+          </div>
+          <div class="app-karte app-profil" data-profil="redm" hidden>
+            <span class="app-leise">Gilt, wenn eines dieser Programme im Vordergrund ist.</span><span class="app-chip" style="justify-self:start">RedM*.exe</span>
+            <div class="app-zeile"><span class="app-taste"><kbd>Num1</kbd></span><span class="app-auswahl">Figur: Cyborg</span></div><div class="app-zeile"><span class="app-taste"><kbd>Num5</kbd></span><span class="app-auswahl">Umgebung: Funkgerät</span></div><div class="app-zeile"><span class="app-taste"><kbd>Maus5</kbd></span><span class="app-auswahl">Sound: Gong</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="abschnitt geteilt overlay-teil" id="overlay">
@@ -250,9 +313,23 @@
       <li>Applaus</li><li>Jubel</li><li>Lachen</li><li>Staunen</li><li>Trommelwirbel</li><li>Gong</li><li>Falsch</li><li>Klopfen</li><li>Kasse</li><li>Explosion</li>
     </ul>
     <div class="geteilt aufnahmen-teil">
-      <figure class="bildschirm">
-        <img src="/assets/img/app-aufnahmen.webp" alt="MaskCue: Seite Aufnahmen mit Aufnahme-Knopf, Pegel und zwei gespeicherten Aufnahmen" width="1600" height="922" loading="lazy">
-      </figure>
+      <div class="app-fenster" role="group" aria-label="Vorschau der App: Seite Aufnahmen. Probier den Aufnahme-Knopf aus.">
+      <div class="app-leiste"><span class="app-punkt"></span><span class="app-chip akzent">Profil FiveM · automatisch</span><span class="app-chip">52 ms</span></div>
+      <div class="app-inhalt">
+        <div class="app-seite" aria-hidden="true"><img src="/assets/img/logo.svg" alt="" width="40" height="40"><span>Übersicht</span><span>Figuren</span><span>Umgebungen</span><span>Sounds</span><span class="an">Aufnahmen</span><span>Hotkeys</span></div>
+        <div class="app-haupt">
+          <div class="app-titel">Aufnahmen</div>
+          <div class="app-karte">
+            <h4>Aufnehmen</h4>
+            <span class="app-leise">Nimmt auf, was aus „Spiel“ kommt: deine Stimme mit Figur und Umgebung, dazu Sounds und Musik.</span>
+            <div class="app-aufnahme"><button type="button" class="app-knopf voll" data-aufnehmen data-start="● Aufnehmen" data-stopp="■ Stopp" data-neu="Aufnahme">● Aufnehmen</button><span class="app-zeit" data-zeit>0:00</span></div>
+            <div class="app-pegel" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+          <h4 style="margin:6px 0 0;font-family:var(--titel);font-size:17px">Deine Aufnahmen</h4>
+          <div class="app-karte" data-liste><div class="app-liste-zeile"><span class="app-rund" title="Anhören"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span><span class="app-name">Funkspruch Zentrale</span><span class="app-leise">0:06</span><button type="button" class="app-knopf umriss" data-board data-an="Im Soundboard" data-aus="Ins Soundboard">Ins Soundboard</button></div><div class="app-liste-zeile"><span class="app-rund" title="Anhören"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span><span class="app-name">Durchsage Bahnhof</span><span class="app-leise">0:12</span><button type="button" class="app-knopf umriss" data-board data-an="Im Soundboard" data-aus="Ins Soundboard">Ins Soundboard</button></div></div>
+        </div>
+      </div>
+    </div>
       <div>
         <h3>Sätze aufnehmen, jederzeit abspielen.</h3>
         <ul class="liste">

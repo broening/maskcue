@@ -162,17 +162,60 @@
       <p>You create characters like in a role play: picture, name, voice. One click or a hotkey turns them on. Deeper and in a cave for the demon, high and cheeky for the goblin.</p>
     </div>
 
-    <ol class="weg" aria-label="How your voice travels through MaskCue">
-      <li class="weg-ende">Microphone</li>
-      <li class="weg-stufe"><span class="karte"><span class="nr">1</span><div><strong>AI voice</strong><span>optional, another person</span></div></span></li>
-      <li class="weg-stufe"><span class="karte"><span class="nr">2</span><div><strong>Sound</strong><span>pitch, timbre, bright/dark</span></div></span></li>
-      <li class="weg-stufe"><span class="karte"><span class="nr">3</span><div><strong>Space</strong><span>cave, radio, space helmet …</span></div></span></li>
-      <li class="weg-ende">Discord, TS, game</li>
-    </ol>
 
-    <figure class="bildschirm">
-      <img src="/assets/img/app-figuren.webp" alt="MaskCue: characters page with the settings of the Demon character opened (German interface)" width="1600" height="1000" loading="lazy">
-    </figure>
+    <div class="app-fenster" role="group" aria-label="App preview: characters page. Try the buttons.">
+      <div class="app-leiste"><span class="app-punkt"></span><span class="app-chip akzent">Profile FiveM · automatic</span><span class="app-chip">52 ms</span></div>
+      <div class="app-inhalt">
+        <div class="app-seite" aria-hidden="true"><img src="/assets/img/logo.svg" alt="" width="40" height="40"><span>Overview</span><span class="an">Characters</span><span>Spaces</span><span>Sounds</span><span>Recordings</span><span>Hotkeys</span></div>
+        <div class="app-haupt">
+          <div class="app-titel">Characters<span class="app-knopf voll">+ New character</span></div>
+          <div class="app-karte" data-verfahren="Fast">
+            <div class="app-figur-kopf">
+              <img class="app-bild" src="/assets/img/figuren/daemon.webp" alt="" width="46" height="46" loading="lazy">
+              <div class="app-figur-titel"><strong>Demon</strong><span class="app-chips"><span class="app-chip aus" data-ki-chip>No AI</span><span class="app-chip" data-ton>Fast · −7 semitones</span><span class="app-chip">Stalactite cave</span></span></div>
+              <div class="app-knoepfe"><button type="button" class="app-knopf voll" data-einschalten data-an="Active" data-aus="Turn on">Turn on</button><button type="button" class="app-knopf tonal" data-einstellen aria-expanded="true">Settings</button></div>
+            </div>
+            <div class="app-einstellungen">
+              <div class="app-weg" role="tablist">
+                <span>Microphone →</span>
+                <button type="button" role="tab" data-stufe="ki" aria-selected="false"><b>1</b><span>AI voice<small data-ki-wert data-aus-text="Off" data-an-text="Thorsten">Off</small></span></button>
+                <button type="button" role="tab" data-stufe="ton" aria-selected="true"><b>2</b><span>Sound<small data-ton>Fast · −7 semitones</small></span></button>
+                <button type="button" role="tab" data-stufe="umgebung" aria-selected="false"><b>3</b><span>Space<small>Stalactite cave</small></span></button>
+                <span>→ Output</span>
+              </div>
+              <div class="app-stufe" data-panel="ton">
+                <div class="app-feld"><span>Method</span><span class="app-auswahl">Fast (approx. 31 ms)</span></div>
+                <label class="app-regler"><span>Pitch <output>−7 semitones</output></span><input type="range" min="-15" max="30" step="1" value="-7" data-einheit=" semitones" data-ziel="ton"></label>
+                <label class="app-regler"><span>Timbre <output>−4 semitones</output></span><input type="range" min="-4" max="12" step="1" value="-4" data-einheit=" semitones"></label>
+                <label class="app-regler"><span>Bright / Dark <output>0 dB</output></span><input type="range" min="-6" max="6" step="1" value="0" data-einheit=" dB"></label>
+              </div>
+              <div class="app-stufe" data-panel="ki" hidden>
+                <div class="app-schalter"><span><strong>AI voice</strong><br><span class="app-leise">Turns your voice into another person.</span></span><button type="button" role="switch" aria-checked="false" aria-label="AI voice" data-ki-schalter data-chip-aus="No AI" data-chip-an="Thorsten"></button></div>
+                <div class="app-ganz" data-ki-teil hidden><div class="app-feld"><span>Voice</span><span class="app-knopf voll" style="justify-self:start">Thorsten</span></div></div>
+              </div>
+              <div class="app-stufe" data-panel="umgebung" hidden>
+                <div class="app-feld"><span>Space</span><span class="app-auswahl">Stalactite cave</span></div>
+                <label class="app-regler"><span>Strength for this character <output>70 %</output></span><input type="range" min="0" max="100" step="5" value="70" data-einheit=" %" data-ohne-vorzeichen></label>
+              </div>
+            </div>
+          </div>
+          <div class="app-karte">
+            <div class="app-figur-kopf">
+              <img class="app-bild" src="/assets/img/figuren/kobold.webp" alt="" width="46" height="46" loading="lazy">
+              <div class="app-figur-titel"><strong>Goblin</strong><span class="app-chips"><span class="app-chip aus">No AI</span><span class="app-chip">Fast · +5 semitones</span><span class="app-chip aus">No space</span></span></div>
+              <div class="app-knoepfe"><button type="button" class="app-knopf voll" data-einschalten data-an="Active" data-aus="Turn on">Turn on</button></div>
+            </div>
+          </div>
+          <div class="app-karte">
+            <div class="app-figur-kopf">
+              <img class="app-bild" src="/assets/img/figuren/roboter.webp" alt="" width="46" height="46" loading="lazy">
+              <div class="app-figur-titel"><strong>Cyborg</strong><span class="app-chips"><span class="app-chip aus">No AI</span><span class="app-chip">Fast · −2 semitones</span><span class="app-chip">Robot</span></span></div>
+              <div class="app-knoepfe"><button type="button" class="app-knopf voll" data-einschalten data-an="Active" data-aus="Turn on">Turn on</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="drei">
       <div>
@@ -211,9 +254,29 @@
         <li><strong>Stop all.</strong> One key in every profile stops all sounds at once. Plus mute on/off and recording on/off.</li>
       </ul>
     </div>
-    <figure class="bildschirm schraeg">
-      <img src="/assets/img/app-hotkeys.webp" alt="MaskCue: hotkeys page with the FiveM and RedM profiles and keys for sounds (German interface)" width="1600" height="922" loading="lazy">
-    </figure>
+    <div class="app-fenster" role="group" aria-label="App preview: hotkeys page. Try the profiles.">
+      <div class="app-leiste"><span class="app-punkt"></span><span class="app-chip akzent">Profile FiveM · automatic</span><span class="app-chip">52 ms</span></div>
+      <div class="app-inhalt">
+        <div class="app-seite" aria-hidden="true"><img src="/assets/img/logo.svg" alt="" width="40" height="40"><span>Overview</span><span>Characters</span><span>Spaces</span><span>Sounds</span><span>Recordings</span><span class="an">Hotkeys</span></div>
+        <div class="app-haupt">
+          <div class="app-titel">Hotkeys</div>
+          <div class="app-karte"><h4>In every profile</h4><div class="app-zeile"><span class="app-taste"><kbd>Pause</kbd></span><span class="app-auswahl">Stop all</span></div></div>
+          <div class="app-reiter" role="tablist">
+            <button type="button" class="app-knopf tonal" role="tab" data-profil="fivem" aria-selected="true">FiveM</button>
+            <button type="button" class="app-knopf tonal" role="tab" data-profil="redm" aria-selected="false">RedM</button>
+            <span class="app-knopf">+ New profile</span>
+          </div>
+          <div class="app-karte app-profil" data-profil="fivem">
+            <span class="app-leise">Active when one of these programs is in front.</span><span class="app-chip" style="justify-self:start">FiveM*.exe</span>
+            <div class="app-zeile"><span class="app-taste"><kbd>Num1</kbd></span><span class="app-auswahl">Character: Demon</span></div><div class="app-zeile"><span class="app-taste"><kbd>Num2</kbd></span><span class="app-auswahl">Character: Goblin</span></div><div class="app-zeile"><span class="app-taste"><kbd>Num0</kbd></span><span class="app-auswahl">Normal voice</span></div><div class="app-zeile"><span class="app-taste"><kbd>Mouse4</kbd></span><span class="app-auswahl">Sound: Applause</span></div><div class="app-zeile"><span class="app-taste"><kbd>F9</kbd></span><span class="app-auswahl">Recording on/off</span></div>
+          </div>
+          <div class="app-karte app-profil" data-profil="redm" hidden>
+            <span class="app-leise">Active when one of these programs is in front.</span><span class="app-chip" style="justify-self:start">RedM*.exe</span>
+            <div class="app-zeile"><span class="app-taste"><kbd>Num1</kbd></span><span class="app-auswahl">Character: Cyborg</span></div><div class="app-zeile"><span class="app-taste"><kbd>Num5</kbd></span><span class="app-auswahl">Space: Radio</span></div><div class="app-zeile"><span class="app-taste"><kbd>Mouse5</kbd></span><span class="app-auswahl">Sound: Gong</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="abschnitt geteilt overlay-teil" id="overlay">
@@ -250,9 +313,23 @@
       <li>Applause</li><li>Cheering</li><li>Laughter</li><li>Wow</li><li>Drum roll</li><li>Gong</li><li>Wrong</li><li>Knocking</li><li>Cash register</li><li>Explosion</li>
     </ul>
     <div class="geteilt aufnahmen-teil">
-      <figure class="bildschirm">
-        <img src="/assets/img/app-aufnahmen.webp" alt="MaskCue: recordings page with record button, level meter and two saved recordings (German interface)" width="1600" height="922" loading="lazy">
-      </figure>
+      <div class="app-fenster" role="group" aria-label="App preview: recordings page. Try the record button.">
+      <div class="app-leiste"><span class="app-punkt"></span><span class="app-chip akzent">Profile FiveM · automatic</span><span class="app-chip">52 ms</span></div>
+      <div class="app-inhalt">
+        <div class="app-seite" aria-hidden="true"><img src="/assets/img/logo.svg" alt="" width="40" height="40"><span>Overview</span><span>Characters</span><span>Spaces</span><span>Sounds</span><span class="an">Recordings</span><span>Hotkeys</span></div>
+        <div class="app-haupt">
+          <div class="app-titel">Recordings</div>
+          <div class="app-karte">
+            <h4>Record</h4>
+            <span class="app-leise">Records what comes out of “Game”: your voice with character and space, plus sounds and music.</span>
+            <div class="app-aufnahme"><button type="button" class="app-knopf voll" data-aufnehmen data-start="● Record" data-stopp="■ Stop" data-neu="Recording">● Record</button><span class="app-zeit" data-zeit>0:00</span></div>
+            <div class="app-pegel" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+          <h4 style="margin:6px 0 0;font-family:var(--titel);font-size:17px">Your recordings</h4>
+          <div class="app-karte" data-liste><div class="app-liste-zeile"><span class="app-rund" title="Listen"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span><span class="app-name">Radio call dispatch</span><span class="app-leise">0:06</span><button type="button" class="app-knopf umriss" data-board data-an="In soundboard" data-aus="Add to soundboard">Add to soundboard</button></div><div class="app-liste-zeile"><span class="app-rund" title="Listen"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span><span class="app-name">Station announcement</span><span class="app-leise">0:12</span><button type="button" class="app-knopf umriss" data-board data-an="In soundboard" data-aus="Add to soundboard">Add to soundboard</button></div></div>
+        </div>
+      </div>
+    </div>
       <div>
         <h3>Record lines, play them any time.</h3>
         <ul class="liste">

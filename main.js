@@ -270,3 +270,149 @@
     io.observe(wurzel);
   }
 })();
+
+// App-Vorschau: nachgebaute Bildschirme der App zum Ausprobieren.
+// Nichts davon steuert etwas, es zeigt nur, wie sich die App bedient.
+(function () {
+  "use strict";
+  // Zahl mit Vorzeichen und echtem Minus, wie in der App.
+  function zahl(v, ohneVorzeichen) {
+    if (ohneVorzeichen || v === 0) return String(Math.abs(v));
+    return (v > 0 ? "+" : "−") + Math.abs(v);
+  }
+
+  document.querySelectorAll(".app-fenster").forEach(function (f) {
+    // Figuren: Stufen KI-Stimme / Ton / Umgebung.
+    f.querySelectorAll(".app-weg [data-stufe]").forEach(function (k) {
+      k.addEventListener("click", function () {
+        var karte = k.closest(".app-karte");
+        karte.querySelectorAll(".app-weg [data-stufe]").forEach(function (x) {
+          x.setAttribute("aria-selected", String(x === k));
+        });
+        karte.querySelectorAll("[data-panel]").forEach(function (p) {
+          p.hidden = p.getAttribute("data-panel") !== k.getAttribute("data-stufe");
+        });
+      });
+    });
+
+    // Einschalten: immer nur eine Figur aktiv, grüner Rahmen.
+    f.querySelectorAll("[data-einschalten]").forEach(function (k) {
+      k.addEventListener("click", function () {
+        var war = k.closest(".app-karte").classList.contains("aktiv");
+        f.querySelectorAll("[data-einschalten]").forEach(function (x) {
+          x.closest(".app-karte").classList.remove("aktiv");
+          x.textContent = x.getAttribute("data-aus");
+          x.classList.remove("gruen");
+          x.classList.add("voll");
+        });
+        if (!war) {
+          k.closest(".app-karte").classList.add("aktiv");
+          k.textContent = k.getAttribute("data-an");
+          k.classList.remove("voll");
+          k.classList.add("gruen");
+        }
+      });
+    });
+
+    // Einstellen: aufklappen und zuklappen.
+    f.querySelectorAll("[data-einstellen]").forEach(function (k) {
+      k.addEventListener("click", function () {
+        var teil = k.closest(".app-karte").querySelector(".app-einstellungen");
+        teil.hidden = !teil.hidden;
+        k.setAttribute("aria-expanded", String(!teil.hidden));
+        k.classList.toggle("tonal", !teil.hidden);
+        k.classList.toggle("umriss", teil.hidden);
+      });
+    });
+
+    // Regler: Wert anzeigen, Tonhöhe auch in den Schildern.
+    f.querySelectorAll(".app-regler input").forEach(function (r) {
+      r.addEventListener("input", function () {
+        var v = Number(r.value);
+        var text = zahl(v, r.hasAttribute("data-ohne-vorzeichen")) + r.getAttribute("data-einheit");
+        r.closest(".app-regler").querySelector("output").textContent = text;
+        if (r.getAttribute("data-ziel") === "ton") {
+          var karte = r.closest(".app-karte");
+          var verfahren = karte.getAttribute("data-verfahren");
+          karte.querySelectorAll("[data-ton]").forEach(function (e) {
+            e.textContent = v === 0 ? verfahren : verfahren + " · " + text;
+          });
+        }
+      });
+    });
+
+    // KI-Stimme an/aus.
+    f.querySelectorAll("[data-ki-schalter]").forEach(function (k) {
+      k.addEventListener("click", function () {
+        var an = k.getAttribute("aria-checked") !== "true";
+        var karte = k.closest(".app-karte");
+        k.setAttribute("aria-checked", String(an));
+        karte.querySelector("[data-ki-teil]").hidden = !an;
+        var chip = karte.querySelector("[data-ki-chip]");
+        chip.textContent = k.getAttribute(an ? "data-chip-an" : "data-chip-aus");
+        chip.classList.toggle("aus", !an);
+        var wert = karte.querySelector("[data-ki-wert]");
+        wert.textContent = wert.getAttribute(an ? "data-an-text" : "data-aus-text");
+      });
+    });
+
+    // Hotkeys: Profil wählen.
+    f.querySelectorAll(".app-reiter [data-profil]").forEach(function (k) {
+      k.addEventListener("click", function () {
+        f.querySelectorAll(".app-reiter [data-profil]").forEach(function (x) {
+          x.setAttribute("aria-selected", String(x === k));
+        });
+        f.querySelectorAll(".app-profil").forEach(function (p) {
+          p.hidden = p.getAttribute("data-profil") !== k.getAttribute("data-profil");
+        });
+      });
+    });
+
+    // Soundboard: hinein und wieder heraus.
+    function board(k) {
+      k.addEventListener("click", function () {
+        var drin = k.getAttribute("data-drin") === "1";
+        k.setAttribute("data-drin", drin ? "0" : "1");
+        k.textContent = k.getAttribute(drin ? "data-aus" : "data-an");
+        k.classList.toggle("tonal", !drin);
+        k.classList.toggle("umriss", drin);
+      });
+    }
+    f.querySelectorAll("[data-board]").forEach(board);
+
+    // Aufnehmen: Zeit läuft, beim Stopp kommt eine neue Aufnahme in die Liste.
+    f.querySelectorAll("[data-aufnehmen]").forEach(function (k) {
+      var uhr = null;
+      var sekunden = 0;
+      var nr = 3;
+      var anzeige = f.querySelector("[data-zeit]");
+      var zeit = function (s) { return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); };
+      k.addEventListener("click", function () {
+        if (uhr === null) {
+          sekunden = 0;
+          anzeige.textContent = "0:00";
+          f.classList.add("nimmt-auf");
+          k.textContent = k.getAttribute("data-stopp");
+          uhr = setInterval(function () { anzeige.textContent = zeit(++sekunden); }, 1000);
+          return;
+        }
+        clearInterval(uhr);
+        uhr = null;
+        f.classList.remove("nimmt-auf");
+        k.textContent = k.getAttribute("data-start");
+        var liste = f.querySelector("[data-liste]");
+        var vorlage = liste.querySelector(".app-liste-zeile");
+        var neu = vorlage.cloneNode(true);
+        neu.querySelector(".app-name").textContent = k.getAttribute("data-neu") + " " + nr++;
+        neu.querySelector(".app-leise").textContent = zeit(Math.max(1, sekunden));
+        var b = neu.querySelector("[data-board]");
+        b.setAttribute("data-drin", "0");
+        b.textContent = b.getAttribute("data-aus");
+        b.classList.remove("tonal");
+        b.classList.add("umriss");
+        board(b);
+        liste.insertBefore(neu, liste.firstChild);
+      });
+    });
+  });
+})();
