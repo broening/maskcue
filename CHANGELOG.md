@@ -1,27 +1,29 @@
-# Änderungen
+# Changes
 
-## 0.1.2 – 01.11.2026
+**English** | [Deutsch](CHANGELOG.de.md)
 
-- Zum Download gibt es nur noch die KI-Stimme Thorsten.
-- Thorsten kommt jetzt aus dem Release „stimmen-v2“. Ältere Versionen
-  können keine KI-Stimme mehr laden, bitte auf 0.1.2 aktualisieren.
+## 0.1.2 – 2026-11-01
 
-## 0.1.1 – 01.11.2026
+- The AI voice Thorsten is now the only voice available for download.
+- Thorsten now comes from the release “stimmen-v2”. Older versions can no
+  longer download an AI voice, please update to 0.1.2.
 
-- Kleine Änderung an den KI-Stimmen.
+## 0.1.1 – 2026-11-01
 
-## 0.1.0 – 01.11.2026
+- Small change to the AI voices.
 
-Erste Testversion.
+## 0.1.0 – 2026-11-01
 
-- Figuren mit eigener Stimme, Bild, Umgebung und Hotkey
-- Start-Figuren: Dämon, Goblin, Cyborg
-- Verfahren für die Stimme: Schnell, Natürlich, Leicht, Ohne
-- KI-Stimme Thorsten zum Herunterladen, mit Regeln
-- 9 Umgebungen, zum Beispiel großes Gebäude, Funkgerät, Roboter, Raumhelm
-- Soundboard mit Hotkeys, Kategorien und leiser Musik beim Sprechen
-- 10 Sound-Effekte in der Kategorie „Sound-Effects“
-- Spiel-Profile für FiveM und RedM
-- Rauschunterdrückung, Gate, Kompressor, EQ
-- Aufnahmen, Overlay, Figuren exportieren und importieren, Sicherung
-- Deutsch und Englisch
+First test version.
+
+- Characters with their own voice, picture, space and hotkey
+- Start characters: Demon, Goblin, Cyborg
+- Voice methods: Fast, Natural, Light, None
+- AI voice Thorsten to download, with rules
+- 9 spaces, for example large building, radio, robot, space helmet
+- Soundboard with hotkeys, categories and quieter music while you speak
+- 10 sound effects in the category “Sound-Effects”
+- Game profiles for FiveM and RedM
+- Noise suppression, gate, compressor, EQ
+- Recordings, overlay, export and import of characters, backup
+- German and English
