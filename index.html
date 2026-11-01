@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MaskCue – kostenloser Voice-Changer und Soundboard für FiveM, RedM und Discord</title>
+<meta name="description" content="MaskCue verändert deine Stimme in Discord, TeamSpeak und im Spiel. Figuren mit eigener Stimme, KI-Stimme, Umgebungen und Soundboard. Kostenlos für Windows, ohne Konto.">
+<link rel="canonical" href="https://maskcue.com/">
+<meta name="theme-color" content="#060a17">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://maskcue.com/">
+<meta property="og:title" content="MaskCue – eine Taste, eine andere Stimme">
+<meta property="og:description" content="Kostenloser Voice-Changer und Soundboard für Windows. Gebaut für Rollenspiel auf FiveM und RedM.">
+<meta property="og:image" content="https://maskcue.com/assets/img/og.jpg">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="icon" href="/assets/img/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/img/logo-256.png">
+<link rel="preload" href="/assets/fonts/fredoka-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/figtree-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "MaskCue",
+  "url": "https://maskcue.com/",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Windows 10, Windows 11",
+  "softwareVersion": "0.1.2",
+  "fileSize": "16.7 MB",
+  "downloadUrl": "https://github.com/broening/maskcue/releases/latest",
+  "license": "https://www.gnu.org/licenses/gpl-3.0.html",
+  "inLanguage": ["de", "en"],
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+  "image": "https://maskcue.com/assets/img/app-uebersicht.webp",
+  "description": "Kostenloser Voice-Changer und Soundboard für Windows, gebaut für Rollenspiel auf FiveM und RedM."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Ist MaskCue kostenlos?", "acceptedAnswer": { "@type": "Answer", "text": "Ja. MaskCue kostet nichts, braucht kein Konto und zeigt keine Werbung." } },
+    { "@type": "Question", "name": "Funktioniert MaskCue mit Discord, TeamSpeak, FiveM und RedM?", "acceptedAnswer": { "@type": "Answer", "text": "Ja. MaskCue gibt deine Stimme über ein virtuelles Audio-Gerät aus. Das wählst du in Discord, TeamSpeak oder im Spiel als Mikrofon. Mit einem zweiten Gerät hört Discord deine echte Stimme, während im Spiel die Figur spricht." } },
+    { "@type": "Question", "name": "Brauche ich Elgato Wave Link?", "acceptedAnswer": { "@type": "Answer", "text": "Nein. Du brauchst mindestens ein virtuelles Audio-Gerät. Elgato Wave Link 3.0, VoiceMeeter oder VB-Cable gehen alle. Empfohlen sind zwei." } },
+    { "@type": "Question", "name": "Warum warnt Windows beim Installieren?", "acceptedAnswer": { "@type": "Answer", "text": "Der Installer ist noch nicht signiert. Klick auf Weitere Informationen und dann auf Trotzdem ausführen." } },
+    { "@type": "Question", "name": "Läuft MaskCue auf Mac oder Linux?", "acceptedAnswer": { "@type": "Answer", "text": "Nein, MaskCue läuft nur unter Windows 10 und 11 mit 64 Bit." } }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="sprung" href="#inhalt">Zum Inhalt springen</a>
+
+<header class="kopf">
+  <a class="marke" href="/" aria-label="MaskCue Startseite">
+    <img src="/assets/img/logo.svg" alt="" width="40" height="40">
+    <span>MaskCue</span>
+  </a>
+  <nav class="kopf-nav" aria-label="Hauptmenü">
+    <a href="#hoeren">Hören</a>
+    <a href="#figuren">Figuren</a>
+    <a href="#rollenspiel">Hotkeys</a>
+    <a href="#overlay">Overlay</a>
+    <a href="#ki">KI-Stimme</a>
+    <a href="#fragen">Fragen</a>
+  </nav>
+  <a class="knopf klein" href="https://github.com/broening/maskcue/releases/latest">Download</a>
+</header>
+
+<main id="inhalt">
+
+  <section class="held">
+    <div class="held-text">
+      <p class="hinweis-pille"><span class="punkt" aria-hidden="true"></span> Version 0.1.2 · Testversion</p>
+      <h1>Eine Taste.<br>Eine andere Stimme.</h1>
+      <p class="held-unter">MaskCue verändert deine Stimme in Discord, TeamSpeak und im Spiel. Gebaut für Rollenspiel auf FiveM und RedM. Kostenlos, ohne Konto, direkt auf deinem PC.</p>
+      <div class="knopf-reihe">
+        <a class="knopf gross" href="https://github.com/broening/maskcue/releases/latest">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14"/></svg>
+          Für Windows herunterladen
+        </a>
+        <a class="knopf umriss gross" href="https://discord.gg/yhBvJD6Wa">Discord beitreten</a>
+      </div>
+      <p class="held-meta">Windows 10 und 11 · 16,7 MB · kostenlos</p>
+    </div>
+
+    <div class="buehne" id="buehne" aria-roledescription="Figuren-Vorschau">
+      <div class="masken" id="masken">
+        <div class="maske vorne"><img src="/assets/img/figuren/daemon.webp" alt="Figur Dämon" width="512" height="512"></div>
+      </div>
+      <div class="stimm-zeile" aria-live="polite">
+        <strong id="figur-name">Dämon</strong>
+        <span class="chip" id="figur-ton">Schnell · −7 Halbtöne</span>
+        <span class="chip" id="figur-umgebung">Tropfsteinhöhle</span>
+      </div>
+      <div class="wahl" role="group" aria-label="Figur wählen" id="wahl"></div>
+    </div>
+  </section>
+
+  <section class="abschnitt hoeren" id="hoeren">
+    <div class="abschnitt-kopf">
+      <h2>Hör selbst.</h2>
+      <p>Ein Lied, drei Stimmen. Drück auf Abspielen und wechsle mitten im Lied die Stimme oder die Umgebung. Alles wurde mit MaskCue gerechnet, genau wie live.</p>
+    </div>
+    <div class="spieler" id="spieler">
+      <button class="spieler-start" id="spieler-start" type="button" aria-label="Abspielen">
+        <svg class="an" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg>
+        <svg class="aus" aria-hidden="true" viewBox="0 0 24 24"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+      </button>
+      <div class="spieler-mitte">
+        <div class="spieler-zeile">
+          <span class="spieler-titel">Twinkle Twinkle Little Star</span>
+          <span class="spieler-zeit" id="spieler-zeit">0:00</span>
+        </div>
+        <div class="spieler-leiste" aria-hidden="true"><i id="spieler-stand"></i></div>
+      </div>
+      <div class="spieler-gruppe">
+        <span class="spieler-etikett" id="etikett-stimme">Stimme</span>
+        <div class="segmente" role="group" aria-labelledby="etikett-stimme" id="wahl-stimme">
+          <button type="button" data-stimme="original" aria-pressed="true">Original</button>
+          <button type="button" data-stimme="thorsten" aria-pressed="false">Thorsten</button>
+          <button type="button" data-stimme="w1" aria-pressed="false">Stimme W1</button>
+        </div>
+      </div>
+      <div class="spieler-gruppe">
+        <span class="spieler-etikett" id="etikett-umgebung">Umgebung</span>
+        <div class="segmente klein" role="group" aria-labelledby="etikett-umgebung" id="wahl-umgebung">
+          <button type="button" data-umgebung="keine" aria-pressed="true">Keine</button>
+          <button type="button" data-umgebung="halle" aria-pressed="false">Großes Gebäude</button>
+          <button type="button" data-umgebung="hoehle" aria-pressed="false">Tropfsteinhöhle</button>
+          <button type="button" data-umgebung="funk" aria-pressed="false">Funkgerät</button>
+          <button type="button" data-umgebung="telepathie" aria-pressed="false">Telepathie</button>
+          <button type="button" data-umgebung="roboter" aria-pressed="false">Roboter</button>
+          <button type="button" data-umgebung="maske" aria-pressed="false">Maskiert</button>
+          <button type="button" data-umgebung="raumhelm" aria-pressed="false">Raumschiff</button>
+          <button type="button" data-umgebung="weltall" aria-pressed="false">Weltraum</button>
+          <button type="button" data-umgebung="megafon" aria-pressed="false">Megafon</button>
+        </div>
+      </div>
+    </div>
+    <p class="fussnote">Gesang: Dcoetzee, Wikimedia Commons, CC0. Die KI-Stimmen sind fürs Sprechen trainiert, beim Singen klingen sie etwas anders als im Spiel. Stimme W1 ist nur eine Hörprobe und nicht zum Download.</p>
+  </section>
+
+  <section class="abschnitt" id="figuren">
+    <div class="abschnitt-kopf">
+      <h2>Jede Figur ist eine eigene Stimme.</h2>
+      <p>Du legst Figuren an wie Charaktere: Bild, Name, Stimme. Ein Klick oder ein Hotkey schaltet sie ein. Für den Dämon tiefer und in der Höhle, für den Goblin hoch und frech.</p>
+    </div>
+
+    <ol class="weg" aria-label="So läuft deine Stimme durch MaskCue">
+      <li class="weg-ende">Mikrofon</li>
+      <li class="weg-stufe"><span class="karte"><span class="nr">1</span><div><strong>KI-Stimme</strong><span>wahlweise, eine andere Person</span></div></span></li>
+      <li class="weg-stufe"><span class="karte"><span class="nr">2</span><div><strong>Ton</strong><span>Tonhöhe, Klangfarbe, Hell/Dunkel</span></div></span></li>
+      <li class="weg-stufe"><span class="karte"><span class="nr">3</span><div><strong>Umgebung</strong><span>Höhle, Funkgerät, Raumhelm …</span></div></span></li>
+      <li class="weg-ende">Discord, TS, Spiel</li>
+    </ol>
+
+    <figure class="bildschirm">
+      <img src="/assets/img/app-figuren.webp" alt="MaskCue: Seite Figuren mit aufgeklappten Einstellungen für die Figur Dämon" width="1600" height="1000" loading="lazy">
+    </figure>
+
+    <div class="drei">
+      <div>
+        <h3>Vier Verfahren</h3>
+        <p>Schnell, Natürlich, Leicht oder Ohne. Leicht braucht etwa 15 ms und läuft auch auf schwachen PCs. Natürlich klingt bei Riesen und Zwergen am besten.</p>
+      </div>
+      <div>
+        <h3>Drei Figuren zum Start</h3>
+        <p>Dämon, Goblin und Cyborg sind schon da. 32 Bilder liegen bereit, eigene Bilder gehen auch.</p>
+      </div>
+      <div>
+        <h3>Teilen mit Freunden</h3>
+        <p>Exportier eine Figur mit ihren Sounds als Datei. Deine Freunde importieren sie mit einem Klick.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="abschnitt" id="umgebungen">
+    <div class="abschnitt-kopf">
+      <h2>Klingt, als wärst du wirklich dort.</h2>
+      <p>Eine Umgebung legt einen Raum oder Effekt um deine Stimme. Sie kommt mit der Figur oder per Hotkey.</p>
+    </div>
+    <ul class="chips-gross">
+      <li>Großes Gebäude</li><li>Tropfsteinhöhle</li><li>Funkgerät</li><li>Telepathie</li><li>Roboter</li><li>Maskiert</li><li>Raumschiff</li><li>Weltraum</li><li>Megafon</li>
+    </ul>
+  </section>
+
+  <section class="abschnitt geteilt" id="rollenspiel">
+    <div>
+      <h2>Hotkeys mit eigenem Profil für jedes Spiel.</h2>
+      <p class="gross-text">Leg Figuren, Sounds, Umgebungen und Aufnahmen auf Tasten. MaskCue erkennt, welches Spiel vorne ist, und nimmt das passende Profil.</p>
+      <ul class="liste">
+        <li><strong>Spiel-Profile.</strong> FiveM und RedM sind schon angelegt. Für jedes andere Spiel legst du ein Profil an, zum Beispiel für <code>cs2.exe</code>.</li>
+        <li><strong>Wechselt von selbst.</strong> Gehst du von FiveM zu RedM, gelten sofort die RedM-Tasten. Im Browser oder auf dem Desktop bleiben die Sound-Tasten aus, wenn du nichts anderes einstellst.</li>
+        <li><strong>Jede Taste.</strong> Tastatur, Ziffernblock und Maustasten.</li>
+        <li><strong>Alles stoppen.</strong> Eine Taste in jedem Profil beendet alle Sounds sofort. Dazu Stumm an/aus und Aufnahme an/aus.</li>
+      </ul>
+    </div>
+    <figure class="bildschirm schraeg">
+      <img src="/assets/img/app-hotkeys.webp" alt="MaskCue: Seite Hotkeys mit den Profilen FiveM und RedM und Tasten für Sounds" width="1600" height="922" loading="lazy">
+    </figure>
+  </section>
+
+  <section class="abschnitt geteilt overlay-teil" id="overlay">
+    <div class="spielszene" aria-hidden="true">
+      <div class="szene-himmel"></div>
+      <div class="ov-pille spricht">
+        <span class="ov-bild"><img src="/assets/img/figuren/daemon.webp" alt="" width="64" height="64" loading="lazy"></span>
+        <span class="ov-name">Dämon</span>
+        <span class="ov-zeichen umgebung"><svg viewBox="0 0 24 24"><path d="M12 13v8M8.5 9.5a5 5 0 0 1 7 0M5.6 6.6a9 9 0 0 1 12.8 0"/><circle cx="12" cy="12" r="1.6"/></svg></span>
+        <span class="ov-zeichen sounds"><span class="eq"><i></i><i></i><i></i></span>2</span>
+        <span class="ov-zeichen musik"><svg viewBox="0 0 24 24"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg></span>
+      </div>
+    </div>
+    <div>
+      <h2>Im Spiel siehst du, als wer du sprichst.</h2>
+      <p class="gross-text">Eine kleine Leiste liegt über dem Spiel. Sie zeigt dir alles auf einen Blick, ohne dass du aus dem Spiel musst. Klicks gehen durch sie hindurch.</p>
+      <dl class="legende">
+        <div><dt><span class="mini bild"></span>Bild und Name</dt><dd>Welche Figur gerade an ist</dd></div>
+        <div><dt><span class="mini rahmen"></span>Grüner Rahmen</dt><dd>Du sprichst gerade. Rot heißt: stumm</dd></div>
+        <div><dt><span class="mini-z umgebung"><svg viewBox="0 0 24 24"><path d="M12 13v8M8.5 9.5a5 5 0 0 1 7 0M5.6 6.6a9 9 0 0 1 12.8 0"/><circle cx="12" cy="12" r="1.6"/></svg></span>Antenne</dt><dd>Eine Umgebung ist an, hier Funkgerät</dd></div>
+        <div><dt><span class="mini-z sounds"><span class="eq"><i></i><i></i><i></i></span></span>Balken mit Zahl</dt><dd>So viele Sounds laufen gerade</dd></div>
+        <div><dt><span class="mini-z musik"><svg viewBox="0 0 24 24"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg></span>Note</dt><dd>Im Hintergrund läuft Musik</dd></div>
+        <div><dt><span class="mini aufnahme"></span>Roter Punkt</dt><dd>Eine Aufnahme läuft</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="abschnitt" id="sounds">
+    <div class="abschnitt-kopf">
+      <h2>Soundboard und Aufnahmen.</h2>
+      <p>Leg eigene Sounds und Musik auf Hotkeys. Mehrere Sounds laufen gleichzeitig, und Musik wird von selbst leiser, wenn du sprichst. Zehn Sound-Effekte sind schon dabei, alle frei lizenziert.</p>
+    </div>
+    <ul class="sound-raster">
+      <li>Applaus</li><li>Jubel</li><li>Lachen</li><li>Staunen</li><li>Trommelwirbel</li><li>Gong</li><li>Falsch</li><li>Klopfen</li><li>Kasse</li><li>Explosion</li>
+    </ul>
+    <div class="geteilt aufnahmen-teil">
+      <figure class="bildschirm">
+        <img src="/assets/img/app-aufnahmen.webp" alt="MaskCue: Seite Aufnahmen mit Aufnahme-Knopf, Pegel und zwei gespeicherten Aufnahmen" width="1600" height="922" loading="lazy">
+      </figure>
+      <div>
+        <h3>Sätze aufnehmen, jederzeit abspielen.</h3>
+        <ul class="liste">
+          <li><strong>Mit Figur und Umgebung.</strong> MaskCue nimmt auf, was die anderen hören: deine veränderte Stimme, dazu laufende Sounds und Musik.</li>
+          <li><strong>Sauber geschnitten.</strong> Stille am Anfang und Ende fällt weg. Eine Aufnahme darf bis zu 10 Minuten lang sein.</li>
+          <li><strong>Ins Soundboard.</strong> Ein Klick, und die Aufnahme liegt auf einer Taste. So spielst du im RP einen Funkspruch oder eine Durchsage ab, während du weiterredest.</li>
+          <li><strong>Mehrere gleichzeitig.</strong> Aufnahmen, Sounds und Musik laufen zusammen.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="fussnote">Gut zu wissen: Andere hören deine Sounds nur, solange du Push-to-Talk drückst. MaskCue drückt die Taste nicht für dich.</p>
+  </section>
+
+  <section class="abschnitt" id="stimme-klar">
+    <div class="drei">
+      <div>
+        <h3>Saubere Stimme</h3>
+        <p>Rauschunterdrückung, Gate, Kompressor und EQ für dein Mikrofon. Tastatur und Lüfter bleiben draußen.</p>
+      </div>
+      <div>
+        <h3>Verzögerung im Blick</h3>
+        <p>MaskCue zeigt dir live, wie viele Millisekunden deine Stimme braucht. Jeder Baustein lässt sich abschalten und spart dann seine Zeit.</p>
+      </div>
+      <div>
+        <h3>Sicherung</h3>
+        <p>Speichere alle Einstellungen mit Sounds und Bildern als eine Datei. Auf einem neuen PC spielst du sie mit einem Klick ein.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="abschnitt geteilt ki" id="ki">
+    <div>
+      <h2>Eine KI-Stimme, die auf deinem PC bleibt.</h2>
+      <p class="gross-text">Thorsten macht aus deiner Stimme eine andere Person. Die KI läuft auf deinem Prozessor, ohne Internet und ohne Cloud.</p>
+      <p>Du lädst sie in MaskCue, etwa 18 MB. Vorher stimmst du kurzen Regeln zu.</p>
+    </div>
+    <div class="regeln">
+      <h3>Die Regeln</h3>
+      <ul>
+        <li>Für Spiele, Rollenspiel, Spaß und eigene Inhalte.</li>
+        <li>Nicht als echte Person ausgeben.</li>
+        <li>Niemanden täuschen, betrügen oder belästigen.</li>
+        <li>Regeln der Spiele und Server einhalten. Was du sagst, verantwortest du.</li>
+      </ul>
+      <p class="fussnote">Thorsten: Thorsten-Voice, CC0.</p>
+    </div>
+  </section>
+
+  <section class="abschnitt" id="start">
+    <div class="abschnitt-kopf">
+      <h2>In drei Schritten startklar.</h2>
+    </div>
+    <ol class="schritte">
+      <li>
+        <h3>Herunterladen</h3>
+        <p>Lade <code>MaskCue_0.1.2_x64-setup.exe</code> und starte die Datei.</p>
+      </li>
+      <li>
+        <h3>Warnung bestätigen</h3>
+        <p>Windows warnt vielleicht, weil der Installer noch nicht signiert ist. Klick auf <em>Weitere Informationen</em> und dann auf <em>Trotzdem ausführen</em>.</p>
+      </li>
+      <li>
+        <h3>Einrichten</h3>
+        <p>Die Seite <em>Einrichtung</em> in MaskCue zeigt dir, wie deine Stimme in Discord, TeamSpeak und im Spiel ankommt.</p>
+      </li>
+    </ol>
+    <div class="brauchst">
+      <h3>Was du brauchst</h3>
+      <p>Windows 10 oder 11 mit 64 Bit, ein Mikrofon und mindestens ein virtuelles Audio-Gerät, zum Beispiel von Elgato Wave Link 3.0, VoiceMeeter oder VB-Cable.</p>
+      <p>Mit einem Gerät nimmst du den Ausgang „Spiel“ überall als Mikrofon. Brauchst du deine echte Stimme, schaltest du die Figur aus. Empfohlen sind zwei Geräte: „Spiel“ für Figur und Sounds, „Chat“ für deine echte, entrauschte Stimme, zum Beispiel in Discord.</p>
+    </div>
+  </section>
+
+  <section class="abschnitt fragen-teil" id="fragen">
+    <div class="fragen-kopf">
+      <h2>Fragen</h2>
+      <p>Deine Frage ist nicht dabei? Frag im Discord.</p>
+      <a class="knopf umriss" href="https://discord.gg/yhBvJD6Wa">Discord beitreten</a>
+    </div>
+    <div class="fragen">
+      <details>
+        <summary>Ist MaskCue kostenlos?</summary>
+        <p>Ja. MaskCue kostet nichts, braucht kein Konto und zeigt keine Werbung.</p>
+      </details>
+      <details>
+        <summary>Funktioniert MaskCue mit Discord, TeamSpeak, FiveM und RedM?</summary>
+        <p>Ja. MaskCue gibt deine Stimme über ein virtuelles Audio-Gerät aus. Das wählst du in Discord, TeamSpeak oder im Spiel als Mikrofon. Mit einem zweiten Gerät hört Discord deine echte Stimme, während im Spiel die Figur spricht.</p>
+      </details>
+      <details>
+        <summary>Brauche ich Elgato Wave Link?</summary>
+        <p>Nein. Du brauchst mindestens ein virtuelles Audio-Gerät. Elgato Wave Link 3.0, VoiceMeeter oder VB-Cable gehen alle. Empfohlen sind zwei.</p>
+      </details>
+      <details>
+        <summary>Warum warnt Windows beim Installieren?</summary>
+        <p>Der Installer ist noch nicht signiert. Klick auf <em>Weitere Informationen</em> und dann auf <em>Trotzdem ausführen</em>. Die Prüfsumme der Datei steht auf der <a href="https://github.com/broening/maskcue/releases/latest">Download-Seite</a>.</p>
+      </details>
+      <details>
+        <summary>Schickt MaskCue meine Stimme ins Internet?</summary>
+        <p>Nein. Alles läuft auf deinem PC. Ins Internet geht MaskCue nur, wenn du eine KI-Stimme herunterlädst.</p>
+      </details>
+      <details>
+        <summary>Läuft MaskCue auf Mac oder Linux?</summary>
+        <p>Nein, MaskCue läuft nur unter Windows 10 und 11 mit 64 Bit.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="schluss">
+    <img src="/assets/img/logo.svg" alt="" width="96" height="96">
+    <h2>Setz die Maske auf.</h2>
+    <p>Kostenlos für Windows. Fehler und Wünsche gerne in den Discord.</p>
+    <div class="knopf-reihe mitte">
+      <a class="knopf gross" href="https://github.com/broening/maskcue/releases/latest">Für Windows herunterladen</a>
+      <a class="knopf umriss gross" href="https://discord.gg/yhBvJD6Wa">Discord beitreten</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="fuss">
+  <div class="marke klein"><img src="/assets/img/logo.svg" alt="" width="28" height="28"><span>MaskCue</span></div>
+  <nav aria-label="Rechtliches und Links">
+    <a href="https://github.com/broening/maskcue">GitHub</a>
+    <a href="https://discord.gg/yhBvJD6Wa">Discord</a>
+    <a href="/impressum.html">Impressum</a>
+    <a href="/datenschutz.html">Datenschutz</a>
+  </nav>
+  <p>Freie Software unter der GPL-3.0.</p>
+</footer>
+
+<script src="/main.js" defer></script>
+</body>
+</html>
