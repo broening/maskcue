@@ -5,9 +5,9 @@
 Free voice changer and soundboard for Windows. Made for streamers and role
 players, for example on FiveM and RedM.
 
-**[⬇ Download MaskCue](https://github.com/broening/maskcue/releases/latest)** · Version 0.1.3 · [maskcue.com](https://maskcue.com/en/) · [Discord](https://discord.gg/yhBvJD6Wa)
+**[⬇ Download MaskCue](https://github.com/broening/maskcue/releases/latest)** · Version 0.1.4 · [maskcue.com](https://maskcue.com/en/) · [Discord](https://discord.gg/yhBvJD6Wa)
 
-> Version 0.1.3 is an early test version. There may still be bugs.
+> Version 0.1.4 is an early test version. There may still be bugs.
 > Report them on Discord or under [Issues](https://github.com/broening/maskcue/issues).
 
 ## What MaskCue does
@@ -28,6 +28,7 @@ players, for example on FiveM and RedM.
   share characters as a file, back up all settings.
 - **Low latency:** MaskCue shows the latency in milliseconds.
 - **Start with Windows:** optional, MaskCue then waits hidden in the tray.
+- **Updates:** automatic, notify only or off. Updates are signed.
 - **Languages:** The app is available in English and German.
 
 ## What you need
@@ -44,7 +45,7 @@ players, for example on FiveM and RedM.
 
 ## Install
 
-1. Download `MaskCue_0.1.3_x64-setup.exe` from the
+1. Download `MaskCue_0.1.4_x64-setup.exe` from the
    [download page](https://github.com/broening/maskcue/releases/latest).
 2. Run the file.
 3. Windows may show “Windows protected your PC”. This happens because the
@@ -55,7 +56,7 @@ players, for example on FiveM and RedM.
 page. In PowerShell:
 
 ```text
-Get-FileHash .\MaskCue_0.1.3_x64-setup.exe -Algorithm SHA256
+Get-FileHash .\MaskCue_0.1.4_x64-setup.exe -Algorithm SHA256
 ```
 
 ## AI voice
@@ -90,8 +91,9 @@ cash register and explosion. Authors and sources are listed in
 ## Privacy
 
 MaskCue runs on your PC. Your voice and your settings never leave your PC.
-MaskCue only goes online when you download the AI voice. It then downloads
-the file from GitHub.
+MaskCue only goes online for two things, both at GitHub: when you download
+the AI voice, and to look for updates at startup. The update check can be
+set to automatic, notify only or off (Settings → General → Updates).
 
 ## License
 
