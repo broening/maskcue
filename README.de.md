@@ -5,9 +5,9 @@
 Kostenloser Voice-Changer und Soundboard für Windows. Gemacht für Streamer und
 Rollenspieler, zum Beispiel auf FiveM und RedM.
 
-**[⬇ MaskCue herunterladen](https://github.com/broening/maskcue/releases/latest)** · Version 0.1.2 · [maskcue.com](https://maskcue.com) · [Discord](https://discord.gg/yhBvJD6Wa)
+**[⬇ MaskCue herunterladen](https://github.com/broening/maskcue/releases/latest)** · Version 0.1.3 · [maskcue.com](https://maskcue.com) · [Discord](https://discord.gg/yhBvJD6Wa)
 
-> Version 0.1.2 ist eine frühe Testversion. Es kann noch Fehler geben.
+> Version 0.1.3 ist eine frühe Testversion. Es kann noch Fehler geben.
 > Fehler meldest du im Discord oder unter [Issues](https://github.com/broening/maskcue/issues).
 
 ## Was MaskCue kann
@@ -27,6 +27,7 @@ Rollenspieler, zum Beispiel auf FiveM und RedM.
 - **Aufnahmen, Overlay, Export:** Stimme aufnehmen, Overlay im Spiel, Figuren
   als Datei weitergeben, alle Einstellungen sichern.
 - **Wenig Verzögerung:** MaskCue zeigt die Verzögerung in Millisekunden an.
+- **Mit Windows starten:** wahlweise, MaskCue wartet dann unsichtbar im Tray.
 - **Sprachen:** Die App gibt es auf Deutsch und Englisch.
 
 ## Was du brauchst
@@ -43,7 +44,7 @@ Rollenspieler, zum Beispiel auf FiveM und RedM.
 
 ## Installieren
 
-1. Lade `MaskCue_0.1.2_x64-setup.exe` von der
+1. Lade `MaskCue_0.1.3_x64-setup.exe` von der
    [Download-Seite](https://github.com/broening/maskcue/releases/latest).
 2. Starte die Datei.
 3. Windows zeigt vielleicht „Der Computer wurde durch Windows geschützt“.
@@ -55,7 +56,7 @@ Rollenspieler, zum Beispiel auf FiveM und RedM.
 Download-Seite. In PowerShell:
 
 ```text
-Get-FileHash .\MaskCue_0.1.2_x64-setup.exe -Algorithm SHA256
+Get-FileHash .\MaskCue_0.1.3_x64-setup.exe -Algorithm SHA256
 ```
 
 ## KI-Stimme
