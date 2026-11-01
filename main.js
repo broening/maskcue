@@ -4,7 +4,18 @@
   "use strict";
 
   // Werte wie in der App (Start-Figuren und Bilder aus src/assets/avatare).
-  var FIGUREN = [
+  // Die Seite gibt es auf Deutsch (/de/) und Englisch (/en/).
+  var EN = document.documentElement.lang === "en";
+  var FIGUREN = EN ? [
+    { name: "Demon", bild: "daemon", ton: "Fast · −7 semitones", umgebung: "Stalactite cave" },
+    { name: "Goblin", bild: "kobold", ton: "Fast · +5 semitones", umgebung: "no space" },
+    { name: "Cyborg", bild: "roboter", ton: "Fast · −2 semitones", umgebung: "Robot" },
+    { name: "Ghost", bild: "geist", ton: "Natural · +2 semitones", umgebung: "Large building" },
+    { name: "Witch", bild: "hexe", ton: "Fast · +3 semitones", umgebung: "Telepathy" },
+    { name: "Pirate", bild: "pirat", ton: "Fast · −3 semitones", umgebung: "Megaphone" },
+    { name: "Alien", bild: "alien", ton: "Light · +6 semitones", umgebung: "Spaceship" },
+    { name: "Princess", bild: "prinzessin", ton: "Natural · +4 semitones", umgebung: "no space" }
+  ] : [
     { name: "Dämon", bild: "daemon", ton: "Schnell · −7 Halbtöne", umgebung: "Tropfsteinhöhle" },
     { name: "Goblin", bild: "kobold", ton: "Schnell · +5 Halbtöne", umgebung: "ohne Umgebung" },
     { name: "Cyborg", bild: "roboter", ton: "Schnell · −2 Halbtöne", umgebung: "Roboter" },
@@ -14,6 +25,7 @@
     { name: "Alien", bild: "alien", ton: "Leicht · +6 Halbtöne", umgebung: "Raumschiff" },
     { name: "Prinzessin", bild: "prinzessin", ton: "Natürlich · +4 Halbtöne", umgebung: "ohne Umgebung" }
   ];
+  var FIGUR = EN ? "Character " : "Figur ";
   var pfad = function (f) { return "/assets/img/figuren/" + f.bild + ".webp"; };
 
   var masken = document.getElementById("masken");
@@ -37,7 +49,7 @@
     karte.className = "maske vorne";
     var bild = document.createElement("img");
     bild.src = pfad(f);
-    bild.alt = "Figur " + f.name;
+    bild.alt = FIGUR + f.name;
     bild.width = 512;
     bild.height = 512;
     bild.decoding = "async";
@@ -114,6 +126,9 @@
   var wurzel = document.getElementById("spieler");
   if (!wurzel || !(window.AudioContext || window.webkitAudioContext)) return;
   var STIMMEN = ["original", "thorsten", "w1"];
+  var EN = document.documentElement.lang === "en";
+  var SPIELEN = EN ? "Play" : "Abspielen";
+  var ANHALTEN = EN ? "Pause" : "Anhalten";
   var LAENGE = 30.2; // erste Strophe (27,2 s) plus Nachhall, in Sekunden
   var start = document.getElementById("spieler-start");
   var stand = document.getElementById("spieler-stand");
@@ -188,7 +203,7 @@
       lauf = null;
     }
     wurzel.classList.remove("laeuft");
-    start.setAttribute("aria-label", "Abspielen");
+    start.setAttribute("aria-label", SPIELEN);
     zeichnen();
   }
   function laden(an) {
@@ -209,7 +224,7 @@
       laden(false);
       lauf = starten(umgebung, puffer, stelle, ctx.currentTime + 0.05, false);
       wurzel.classList.add("laeuft");
-      start.setAttribute("aria-label", "Anhalten");
+      start.setAttribute("aria-label", ANHALTEN);
       zeichnen();
     }).catch(function () { startet = false; laden(false); });
   });

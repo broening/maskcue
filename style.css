@@ -170,6 +170,35 @@ code {
 .kopf-nav a:hover {
   color: var(--text);
 }
+/* Sprache: DE | EN, auch auf dem Handy sichtbar. */
+.sprachen {
+  display: flex;
+  gap: 2px;
+  padding: 2px;
+  border-radius: 999px;
+  background: var(--flaeche-2);
+  box-shadow: var(--relief-flach);
+}
+.sprachen a {
+  display: grid;
+  place-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 10px;
+  border-radius: 999px;
+  color: var(--text-2);
+  text-decoration: none;
+  font-family: var(--titel);
+  font-weight: 600;
+  font-size: 14px;
+}
+.sprachen a:hover {
+  color: var(--text);
+}
+.sprachen a[aria-current="page"] {
+  background: var(--flaeche-4);
+  color: var(--text);
+}
 
 /* ---------- Knöpfe (wie in der App: Relief statt Schatten) ---------- */
 .knopf {
@@ -245,6 +274,16 @@ code {
   display: grid;
   gap: 26px;
   justify-items: start;
+}
+/* Oberzeile im h1: der Suchbegriff, klein über dem großen Satz. */
+.h1-ober {
+  display: block;
+  margin-bottom: 14px;
+  font-family: var(--titel);
+  font-size: clamp(17px, 1.6vw, 21px);
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--akzent-hell);
 }
 .hinweis-pille {
   display: inline-flex;
@@ -1092,11 +1131,19 @@ code {
   .kopf-nav {
     display: none;
   }
-  .kopf .knopf {
+  .kopf .sprachen {
     margin-left: auto;
   }
   .fuss p {
     margin-left: 0;
+  }
+}
+@media (max-width: 440px) {
+  .kopf {
+    gap: 12px;
+  }
+  .kopf > .marke span {
+    display: none;
   }
 }
 @media (max-width: 560px) {
