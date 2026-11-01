@@ -2,6 +2,12 @@
 
 [English](CHANGELOG.md) | **Deutsch**
 
+## 0.1.3 – 01.11.2026
+
+- Neu: **Mit Windows starten** (Einstellungen → Allgemein → Start). MaskCue
+  startet dann beim Anmelden unsichtbar im Tray. Das Fenster öffnest du mit
+  einem Klick auf das Symbol.
+
 ## 0.1.2 – 01.11.2026
 
 - Zum Download gibt es nur noch die KI-Stimme Thorsten.
