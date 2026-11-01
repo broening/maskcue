@@ -416,3 +416,20 @@
     });
   });
 })();
+
+// Kaffee: eigener Betrag als PayPal.me-Link (…/broening/15EUR).
+(function () {
+  "use strict";
+  var form = document.querySelector("form[data-paypal]");
+  if (!form) return;
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var feld = form.querySelector("input");
+    var n = Math.round(Number(feld.value));
+    if (!(n >= 1 && n <= 999)) {
+      feld.focus();
+      return;
+    }
+    window.open(form.getAttribute("data-paypal") + "/" + n + "EUR", "_blank", "noopener");
+  });
+})();
