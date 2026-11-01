@@ -22,11 +22,38 @@
   <p>Daniel Bröning, Website Spezialist, Kaiserstraße 3, 29525 Uelzen, Deutschland. E-Mail: <a href="mailto:mail@website-spezialist.de">mail@website-spezialist.de</a></p>
 
   <h2>Kurz gesagt</h2>
-  <p>Diese Website setzt keine Cookies, nutzt keine Analyse- oder Werbe-Dienste und lädt keine Inhalte von fremden Servern. Schriften und Bilder liegen auf demselben Server wie die Seite.</p>
+  <p>Diese Website setzt keine Cookies und speichert nichts in deinem Browser. Für eine einfache Besucher-Statistik nutzen wir PostHog auf Servern in der EU, ohne Cookies und ohne Aufzeichnung deiner Sitzung. Werbe-Dienste gibt es nicht. Schriften und Bilder liegen auf demselben Server wie die Seite.</p>
 
   <h2>Hosting bei GitHub Pages</h2>
   <p>Die Website liegt bei GitHub Pages, einem Dienst der GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. Beim Aufruf verarbeitet GitHub technisch nötige Daten, zum Beispiel deine IP-Adresse, Datum und Uhrzeit, die aufgerufene Seite und deinen Browser. Das ist nötig, um die Seite auszuliefern und vor Angriffen zu schützen.</p>
   <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Mein berechtigtes Interesse ist eine sichere und zuverlässige Website. GitHub kann Daten in die USA übertragen. GitHub ist nach dem EU-US Data Privacy Framework zertifiziert. Mehr dazu in der <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement">Datenschutzerklärung von GitHub</a>.</p>
+
+  <h2>Statistik mit PostHog</h2>
+  <p>Wir möchten wissen, wie viele Menschen die Seite besuchen und was sie nutzen, zum Beispiel ob sie auf „Herunterladen“ klicken oder die Hörprobe starten. Dafür nutzen wir PostHog, einen Dienst der PostHog, Inc., 2261 Market Street #4008, San Francisco, CA 94114, USA. Die Daten liegen auf Servern von PostHog in der EU (Frankfurt am Main).</p>
+  <p>PostHog läuft hier ohne Cookies und ohne Speicher in deinem Browser. Bei einem Aufruf werden übertragen: die aufgerufene Seite, die Seite, von der du kommst, Browser, Betriebssystem, Bildschirmgröße, ungefähres Land und die Klicks auf bestimmte Knöpfe (Herunterladen, Discord, Kaffee, Hörprobe, Sprache, Fragen, App-Vorschau). Damit Besuche an einem Tag zusammengehören, bildet PostHog auf dem Server aus IP-Adresse und Browser einen Code, der täglich wechselt. Du wirst dadurch nicht über mehrere Tage wiedererkannt. Es gibt keine Aufzeichnung deiner Sitzung und keine Profile über dich.</p>
+  <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Mein berechtigtes Interesse ist, die Seite und die App anhand anonymer Zahlen zu verbessern. Hat dein Browser „Do Not Track“ oder „Global Privacy Control“ eingeschaltet, zählen wir dich nicht. Mehr dazu in der <a href="https://posthog.com/privacy">Datenschutzerklärung von PostHog</a>.</p>
+  <p>Du kannst die Statistik für diesen Browser ausschalten. Dafür merkt sich dein Browser nur diese eine Entscheidung.</p>
+  <p><button class="knopf umriss" type="button" id="statistik-schalter">Statistik ausschalten</button> <span class="fussnote" id="statistik-stand" role="status"></span></p>
+  <script>
+    (function () {
+      var AUS = "maskcue_statistik_aus";
+      var knopf = document.getElementById("statistik-schalter");
+      var stand = document.getElementById("statistik-stand");
+      function lesen() { try { return localStorage.getItem(AUS) === "1"; } catch (e) { return false; } }
+      function zeigen() {
+        var aus = lesen();
+        knopf.textContent = aus ? "Statistik wieder einschalten" : "Statistik ausschalten";
+        stand.textContent = aus ? "Die Statistik ist für diesen Browser ausgeschaltet." : "";
+      }
+      knopf.addEventListener("click", function () {
+        var aus = !lesen();
+        try { aus ? localStorage.setItem(AUS, "1") : localStorage.removeItem(AUS); } catch (e) {}
+        if (aus && window.posthog && window.posthog.opt_out_capturing) window.posthog.opt_out_capturing();
+        zeigen();
+      });
+      zeigen();
+    })();
+  </script>
 
   <h2>Links zu GitHub, Discord und PayPal</h2>
   <p>Die Download-Links führen zu GitHub, der Community-Link zu Discord. Die Kaffee-Knöpfe führen zu PayPal (PayPal (Europe) S.à r.l. et Cie, S.C.A., 22–24 Boulevard Royal, L-2449 Luxemburg). Diese Seite gibt dabei nur den gewählten Betrag in der Adresse mit. Erst wenn du einen dieser Links anklickst, gelten die Datenschutzregeln dieser Dienste.</p>
@@ -37,11 +64,12 @@
   <h2>Deine Rechte</h2>
   <p>Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Du kannst dich bei einer Datenschutz-Aufsichtsbehörde beschweren.</p>
 
-  <p class="fussnote">Stand: November 2026</p>
+  <p class="fussnote">Stand: 1. November 2026</p>
 </main>
 <footer class="fuss">
   <div class="marke klein"><img src="/assets/img/logo.svg" alt="" width="28" height="28"><span>MaskCue</span></div>
   <nav aria-label="Rechtliches und Links"><a href="/de/">Startseite</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></nav>
 </footer>
+<script src="/statistik.js" defer></script>
 </body>
 </html>
