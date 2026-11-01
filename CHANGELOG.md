@@ -2,6 +2,12 @@
 
 **English** | [Deutsch](CHANGELOG.de.md)
 
+## 0.1.3 – 2026-11-01
+
+- New: **Start with Windows** (Settings → General → Startup). MaskCue then
+  starts hidden in the tray when you sign in. Open the window with a click on
+  the icon.
+
 ## 0.1.2 – 2026-11-01
 
 - The AI voice Thorsten is now the only voice available for download.
