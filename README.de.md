@@ -5,9 +5,9 @@
 Kostenloser Voice-Changer und Soundboard für Windows. Gemacht für Streamer und
 Rollenspieler, zum Beispiel auf FiveM und RedM.
 
-**[⬇ MaskCue herunterladen](https://github.com/broening/maskcue/releases/latest)** · Version 0.1.3 · [maskcue.com](https://maskcue.com) · [Discord](https://discord.gg/yhBvJD6Wa)
+**[⬇ MaskCue herunterladen](https://github.com/broening/maskcue/releases/latest)** · Version 0.1.4 · [maskcue.com](https://maskcue.com) · [Discord](https://discord.gg/yhBvJD6Wa)
 
-> Version 0.1.3 ist eine frühe Testversion. Es kann noch Fehler geben.
+> Version 0.1.4 ist eine frühe Testversion. Es kann noch Fehler geben.
 > Fehler meldest du im Discord oder unter [Issues](https://github.com/broening/maskcue/issues).
 
 ## Was MaskCue kann
@@ -28,6 +28,7 @@ Rollenspieler, zum Beispiel auf FiveM und RedM.
   als Datei weitergeben, alle Einstellungen sichern.
 - **Wenig Verzögerung:** MaskCue zeigt die Verzögerung in Millisekunden an.
 - **Mit Windows starten:** wahlweise, MaskCue wartet dann unsichtbar im Tray.
+- **Updates:** automatisch, nur benachrichtigen oder aus. Updates sind unterschrieben.
 - **Sprachen:** Die App gibt es auf Deutsch und Englisch.
 
 ## Was du brauchst
@@ -44,7 +45,7 @@ Rollenspieler, zum Beispiel auf FiveM und RedM.
 
 ## Installieren
 
-1. Lade `MaskCue_0.1.3_x64-setup.exe` von der
+1. Lade `MaskCue_0.1.4_x64-setup.exe` von der
    [Download-Seite](https://github.com/broening/maskcue/releases/latest).
 2. Starte die Datei.
 3. Windows zeigt vielleicht „Der Computer wurde durch Windows geschützt“.
@@ -56,7 +57,7 @@ Rollenspieler, zum Beispiel auf FiveM und RedM.
 Download-Seite. In PowerShell:
 
 ```text
-Get-FileHash .\MaskCue_0.1.3_x64-setup.exe -Algorithm SHA256
+Get-FileHash .\MaskCue_0.1.4_x64-setup.exe -Algorithm SHA256
 ```
 
 ## KI-Stimme
@@ -92,8 +93,10 @@ Klopfen, Kasse und Explosion. Urheber und Quellen stehen in der Datei
 ## Datenschutz
 
 MaskCue läuft auf deinem PC. Deine Stimme und deine Einstellungen verlassen
-den PC nicht. Ins Internet geht MaskCue nur, wenn du die KI-Stimme
-herunterlädst. Dann lädt es die Datei von GitHub.
+den PC nicht. Ins Internet geht MaskCue nur für zwei Dinge, beide bei
+GitHub: wenn du die KI-Stimme herunterlädst und beim Start für die Suche nach
+Updates. Die Update-Suche stellst du auf automatisch, nur benachrichtigen oder
+aus (Einstellungen → Allgemein → Updates).
 
 ## Lizenz
 
