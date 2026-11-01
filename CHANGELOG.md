@@ -2,6 +2,14 @@
 
 **English** | [Deutsch](CHANGELOG.de.md)
 
+## 0.1.4 – 2026-11-02
+
+- New: **Updates** (Settings → General → Updates). Choose **Automatic**
+  (download and install at startup, then restart), **Notify only** or
+  **Off**. Plus a **Check now** button. Updates are signed.
+- Versions up to 0.1.3 have no updater: install 0.1.4 once by hand, after
+  that updates come by themselves.
+
 ## 0.1.3 – 2026-11-01
 
 - New: **Start with Windows** (Settings → General → Startup). MaskCue then
