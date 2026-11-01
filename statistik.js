@@ -23,7 +23,8 @@
     disable_session_recording: true,
     disable_surveys: true,
     capture_dead_clicks: false,
-    capture_performance: false
+    capture_performance: false,
+    enable_heatmaps: false
     // „Do Not Track“ und „Global Privacy Control“ prüft dieses Skript oben
     // selbst. PostHogs eigenes respect_dnt schaltet im cookieless mode alles ab.
   });
