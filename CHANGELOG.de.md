@@ -2,6 +2,15 @@
 
 [English](CHANGELOG.md) | **Deutsch**
 
+## 0.1.4 – 02.11.2026
+
+- Neu: **Updates** (Einstellungen → Allgemein → Updates). Wähle
+  **Automatisch** (beim Start laden und installieren, dann Neustart), **Nur
+  benachrichtigen** oder **Aus**. Dazu ein Knopf **Jetzt prüfen**. Updates
+  sind unterschrieben.
+- Bis 0.1.3 gibt es keinen Updater: 0.1.4 einmal von Hand installieren,
+  danach kommen Updates von selbst.
+
 ## 0.1.3 – 01.11.2026
 
 - Neu: **Mit Windows starten** (Einstellungen → Allgemein → Start). MaskCue
