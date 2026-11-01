@@ -5,9 +5,9 @@
 Free voice changer and soundboard for Windows. Made for streamers and role
 players, for example on FiveM and RedM.
 
-**[⬇ Download MaskCue](https://github.com/broening/maskcue/releases/latest)** · Version 0.1.2 · [maskcue.com](https://maskcue.com/en/) · [Discord](https://discord.gg/yhBvJD6Wa)
+**[⬇ Download MaskCue](https://github.com/broening/maskcue/releases/latest)** · Version 0.1.3 · [maskcue.com](https://maskcue.com/en/) · [Discord](https://discord.gg/yhBvJD6Wa)
 
-> Version 0.1.2 is an early test version. There may still be bugs.
+> Version 0.1.3 is an early test version. There may still be bugs.
 > Report them on Discord or under [Issues](https://github.com/broening/maskcue/issues).
 
 ## What MaskCue does
@@ -27,6 +27,7 @@ players, for example on FiveM and RedM.
 - **Recordings, overlay, export:** Record your voice, see an overlay in game,
   share characters as a file, back up all settings.
 - **Low latency:** MaskCue shows the latency in milliseconds.
+- **Start with Windows:** optional, MaskCue then waits hidden in the tray.
 - **Languages:** The app is available in English and German.
 
 ## What you need
@@ -43,7 +44,7 @@ players, for example on FiveM and RedM.
 
 ## Install
 
-1. Download `MaskCue_0.1.2_x64-setup.exe` from the
+1. Download `MaskCue_0.1.3_x64-setup.exe` from the
    [download page](https://github.com/broening/maskcue/releases/latest).
 2. Run the file.
 3. Windows may show “Windows protected your PC”. This happens because the
@@ -54,7 +55,7 @@ players, for example on FiveM and RedM.
 page. In PowerShell:
 
 ```text
-Get-FileHash .\MaskCue_0.1.2_x64-setup.exe -Algorithm SHA256
+Get-FileHash .\MaskCue_0.1.3_x64-setup.exe -Algorithm SHA256
 ```
 
 ## AI voice
