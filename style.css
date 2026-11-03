@@ -1743,6 +1743,58 @@ span.app-knopf {
   color: var(--text-2);
 }
 
+/* ---------- Lizenzen (lizenzen.html, erzeugt von scripts/lizenzen.mjs) ---------- */
+.text-seite.breit {
+  max-width: 1100px;
+}
+.text-seite .leise {
+  color: var(--text-3);
+}
+.tabelle-rahmen {
+  overflow-x: auto;
+  border-radius: var(--rund-l);
+  background: var(--flaeche-1);
+}
+.lizenz-tabelle {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  color: var(--text-2);
+}
+.lizenz-tabelle th,
+.lizenz-tabelle td {
+  padding: 10px 14px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--flaeche-3);
+}
+.lizenz-tabelle th {
+  color: var(--text);
+  background: var(--flaeche-2);
+  position: sticky;
+  top: 0;
+}
+.lizenz-tabelle td:first-child {
+  overflow-wrap: anywhere;
+  min-width: 180px;
+}
+.text-seite details {
+  background: var(--flaeche-1);
+  border-radius: var(--rund-m);
+  padding: 10px 14px;
+}
+.text-seite summary {
+  cursor: pointer;
+  color: var(--text);
+}
+.text-seite details pre {
+  margin-top: 10px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+  color: var(--text-2);
+}
+
 /* ---------- Auftritt beim Scrollen ---------- */
 .auftauchen {
   opacity: 0;
