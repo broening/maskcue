@@ -2,6 +2,19 @@
 
 [English](CHANGELOG.md) | **Deutsch**
 
+## 0.1.5 – 13.11.2026
+
+- Sicherer Import von **Sicherungen**: Sounds aus einer Sicherung ohne
+  Sound-Dateien behalten nur lokale Pfade (wie `C:\...`). Netzwerk-Pfade
+  fliegen raus. Zahlen außerhalb der Regler werden korrigiert, die
+  Einstellungen gehen beim nächsten Start nicht mehr verloren.
+- **Sound-Dateien** mit kaputter Abtastrate oder zu vielen Kanälen lassen
+  MaskCue nicht mehr abstürzen, sondern zeigen einen Fehler. Erlaubt sind 8
+  bis 192 kHz.
+- **Exporte** nehmen nur Dateien, die wirklich Ton sind.
+- Der **Fehlerbericht** enthält keine Dateipfade mehr (darin steht oft dein
+  Windows-Name).
+
 ## 0.1.4 – 02.11.2026
 
 - Neu: **Updates** (Einstellungen → Allgemein → Updates). Wähle
