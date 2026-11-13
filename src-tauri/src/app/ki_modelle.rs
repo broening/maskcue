@@ -116,7 +116,11 @@ pub fn liste(basis: &Path) -> Vec<KiModellInfo> {
                 })
                 .collect();
             // Angebotene und frühere Stimmen heißen wie hier, nicht wie im Modell.
-            let anzeige = ANGEBOT.iter().map(|a| (a.0, a.1)).chain(FRUEHERE.iter().copied()).find(|a| a.0 == name).map_or(i.name, |a| a.1.to_string());
+            let anzeige = match ANGEBOT.iter().find(|a| a.0 == name) {
+                Some(a) => a.1.to_string(),
+                None if crate::audio::ki::beatrice::modelldatei(&e.path(), "version.txt").exists() => FRUEHER_NAME.to_string(),
+                None => i.name,
+            };
             Some(KiModellInfo { ordner: name, name: anzeige, stimmen })
         })
         .collect();
@@ -136,9 +140,11 @@ const ANGEBOT: &[(&str, &str, u64, &str)] = &[
     ("thorsten", "Thorsten", 17_663_301, "53983278d7804bd7a67ce5dcc5772442e7e0ef8224f9a3a4a86e167ffc1505ec"),
 ];
 
-/// Anzeigenamen für Stimmen, die früher angeboten wurden und bei manchen
-/// Spielern noch installiert sind (Ordner, Name). Werden nicht mehr geladen.
-const FRUEHERE: &[(&str, &str)] = &[("stephanie", "Stimme W1")];
+/// Anzeigename für Stimmen aus unseren Paketen, die nicht mehr angeboten
+/// werden, aber bei manchen Spielern noch installiert sind. Erkennbar an der
+/// Versions-Datei der Pakete. Eigene Modelle (ohne diese Datei) behalten
+/// ihren Namen.
+const FRUEHER_NAME: &str = "Stimme W1";
 
 /// Eine Stimme zum Herunterladen, für die Oberfläche.
 #[derive(Clone, Debug, Serialize)]
@@ -260,8 +266,12 @@ average_pitch = 50.0
         // Nur Thorsten wird angeboten. Eine früher geladene Stimme heißt weiter
         // neutral, nicht wie im Modell.
         assert_eq!(angebot(&t).len(), 1);
-        zip_einrichten(&zip_aus(&[("beatrice_paraphernalia_x.toml", &toml.replace("Thorsten", "Sprecherin")), ("glottix_version.txt", "v1")]), &t, FRUEHERE[0].0).unwrap();
-        assert_eq!(liste(&t).iter().find(|m| m.ordner == FRUEHERE[0].0).unwrap().name, "Stimme W1");
+        zip_einrichten(&zip_aus(&[("beatrice_paraphernalia_x.toml", &toml.replace("Thorsten", "Sprecherin")), ("glottix_version.txt", "v1")]), &t, "frueher").unwrap();
+        assert_eq!(liste(&t).iter().find(|m| m.ordner == "frueher").unwrap().name, FRUEHER_NAME);
+        // Eigenes Modell (ohne Versions-Datei aus unseren Paketen): eigener Name.
+        zip_einrichten(&zip_aus(&[("beatrice_paraphernalia_x.toml", &toml.replace("Thorsten", "Meine Stimme"))]), &t, "eigen").unwrap();
+        assert_eq!(liste(&t).iter().find(|m| m.ordner == "eigen").unwrap().name, "Meine Stimme");
+        std::fs::remove_dir_all(t.join("eigen")).unwrap();
         assert_eq!(liste(&t).iter().find(|m| m.ordner == "thorsten").unwrap().name, "Thorsten");
         // Pfad nach außen: abgelehnt, alter Stand bleibt, kein halber Ordner.
         assert!(zip_einrichten(&zip_aus(&[("../boese.txt", "x")]), &t, "thorsten").is_err());
