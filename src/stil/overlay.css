@@ -1,0 +1,113 @@
+/* Overlay über dem Spiel: eine schmale Pille, sonst alles durchsichtig. */
+
+.overlay-modus,
+.overlay-modus body {
+  background: transparent !important;
+  overflow: hidden;
+}
+
+.overlay-modus body {
+  display: flex;
+  padding: 6px;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+.overlay-modus body[data-ecke$="links"] {
+  justify-content: flex-start;
+}
+.overlay-modus body[data-ecke^="unten"] {
+  align-items: flex-end;
+}
+
+.ov-pille {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  height: 40px;
+  padding: 4px 12px 4px 4px;
+  border-radius: 999px;
+  background: rgb(6 10 23 / 0.72);
+  box-shadow: inset 0 0 0 2px rgb(165 180 252 / 0.18);
+  color: var(--text);
+  transition: box-shadow 160ms ease-out;
+}
+/* Reden: grüner Rahmen mit leichtem Schein. Stumm: roter Rahmen. */
+.ov-pille.spricht {
+  box-shadow:
+    inset 0 0 0 2px var(--gruen),
+    0 0 10px 1px rgb(132 204 22 / 0.55);
+}
+.ov-pille.ist-stumm {
+  box-shadow:
+    inset 0 0 0 2px var(--rot),
+    0 0 10px 1px rgb(239 68 68 / 0.5);
+}
+.ov-zeichen.stumm {
+  color: var(--rot);
+}
+.ov-pille.klein {
+  padding: 4px;
+}
+.ov-pille.klein .ov-name {
+  display: none;
+}
+.ov-bild {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.ov-bild .foto,
+.ov-bild .szene,
+.ov-bild .neutral {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: grid;
+  filter: none;
+}
+.ov-name {
+  font-family: var(--schrift-titel);
+  font-size: 15px;
+  font-weight: 650;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 1px 0 rgb(0 0 0 / 0.6);
+}
+.ov-zeichen {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--schrift-titel);
+  font-size: 13px;
+  font-weight: 650;
+}
+.ov-zeichen.sounds {
+  color: var(--gelb);
+}
+.ov-zeichen.musik {
+  color: var(--tuerkis);
+}
+.ov-zeichen.umgebung {
+  color: var(--akzent-hell);
+}
+.ov-zeichen.aufnahme {
+  color: var(--rot);
+  animation: aufnahme-blinken 1.2s ease-in-out infinite;
+}
+@keyframes aufnahme-blinken {
+  50% {
+    opacity: 0.35;
+  }
+}
+.ov-zeichen .sym {
+  width: 16px;
+  height: 16px;
+}
+.ov-zeichen .eq {
+  height: 12px;
+}

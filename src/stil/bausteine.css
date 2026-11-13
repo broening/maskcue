@@ -1,0 +1,770 @@
+/* Bausteine im Arcade-Stil: dicke 3D-Knöpfe, runde Karten, Federn beim Drücken. */
+
+.sym {
+  display: inline-flex;
+  width: 24px;
+  height: 24px;
+  flex: none;
+}
+.sym svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+/* Hover-Ebene für flache Flächen */
+.ebene {
+  position: relative;
+  isolation: isolate;
+}
+.ebene::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: #fff;
+  opacity: 0;
+  transition: opacity var(--zustand) var(--kurve);
+  pointer-events: none;
+}
+.ebene:hover::after {
+  opacity: 0.06;
+}
+
+/* ---------- 3D-Knöpfe ---------- */
+.knopf {
+  --farbe: var(--flaeche-3);
+  --tief: var(--flaeche-1);
+  --rand: #03060f;
+  --schrift-farbe: var(--text);
+  appearance: none;
+  border: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--abstand-2);
+  height: 44px;
+  padding: 0 var(--abstand-5);
+  margin-bottom: 4px;
+  border-radius: var(--rund-m);
+  font-family: var(--schrift-titel);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  color: var(--schrift-farbe);
+  background: var(--farbe);
+  box-shadow:
+    inset 0 2px 0 rgb(255 255 255 / 0.22),
+    inset 0 -4px 0 var(--tief),
+    0 4px 0 var(--rand);
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    transform 120ms var(--kurve),
+    box-shadow 120ms var(--kurve),
+    filter var(--zustand) var(--kurve);
+}
+.knopf:has(.sym) {
+  padding-left: var(--abstand-4);
+}
+.knopf .sym {
+  width: 20px;
+  height: 20px;
+}
+.knopf:hover {
+  filter: brightness(1.08);
+}
+.knopf:active {
+  transform: translateY(4px);
+  box-shadow:
+    inset 0 2px 0 rgb(255 255 255 / 0.22),
+    inset 0 -2px 0 var(--tief),
+    0 0 0 var(--rand);
+}
+.knopf:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.knopf.gefuellt {
+  --farbe: var(--akzent);
+  --tief: var(--akzent-tief);
+  --rand: var(--akzent-rand);
+  --schrift-farbe: #fff;
+}
+.knopf.spielen {
+  --farbe: var(--gruen);
+  --tief: var(--gruen-tief);
+  --rand: var(--gruen-rand);
+  --schrift-farbe: var(--gruen-rand);
+}
+.knopf.fehler {
+  --farbe: var(--rot);
+  --tief: var(--rot-tief);
+  --rand: var(--rot-rand);
+  --schrift-farbe: #fff;
+}
+.knopf.umriss {
+  --farbe: transparent;
+  --tief: transparent;
+  --rand: transparent;
+  box-shadow: inset 0 0 0 2px var(--kante);
+  margin-bottom: 0;
+}
+.knopf.umriss:active {
+  transform: scale(0.97);
+  box-shadow: inset 0 0 0 2px var(--kante);
+}
+.knopf.text {
+  --farbe: transparent;
+  box-shadow: none;
+  color: var(--akzent-hell);
+  margin-bottom: 0;
+}
+.knopf.text:active {
+  transform: scale(0.97);
+  box-shadow: none;
+}
+.knopf.gross {
+  height: 56px;
+  padding: 0 var(--abstand-6) 0 var(--abstand-5);
+  font-size: 17px;
+  border-radius: var(--rund-l);
+  margin-bottom: 6px;
+}
+.knopf.gross .sym {
+  width: 24px;
+  height: 24px;
+}
+
+.symbolknopf {
+  appearance: none;
+  border: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--rund-m);
+  display: inline-grid;
+  place-items: center;
+  color: var(--text-2);
+  background: transparent;
+  cursor: pointer;
+  transition:
+    transform 120ms var(--kurve),
+    background-color var(--zustand) var(--kurve),
+    color var(--zustand) var(--kurve);
+}
+.symbolknopf:hover {
+  background: rgb(255 255 255 / 0.07);
+  color: var(--text);
+}
+.symbolknopf:active {
+  transform: scale(0.9);
+}
+.symbolknopf.tonal {
+  background: var(--flaeche-3);
+  box-shadow: var(--relief-flach);
+}
+.symbolknopf.gewaehlt {
+  background: var(--akzent);
+  color: #fff;
+}
+
+/* ---------- Schalter ---------- */
+.schalter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--abstand-4);
+  cursor: pointer;
+  min-height: 48px;
+  /* Rahmen für das unsichtbare Feld. Ohne ihn lag es weit unter dem Fenster:
+     Beim Klick schob der Browser es ins Bild und die ganze App rutschte hoch,
+     unten blieb es leer (Dan, Stumm-Schalter unter „Empfindlichkeit“). */
+  position: relative;
+}
+.schalter input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+/* Spur: flache Rille. Griff: erhabener Knopf, der oben aufliegt.
+   Vorher hatte die Spur oben einen dunklen Innenschatten und der Griff unten
+   einen grauen Rand: Er sah aus, als stecke er in der Spur fest (Dan). */
+.schalter-spur {
+  flex: none;
+  position: relative;
+  width: 58px;
+  height: 34px;
+  border-radius: var(--rund-voll);
+  background: var(--flaeche-1);
+  box-shadow: inset 0 0 0 2px var(--flaeche-4);
+  transition:
+    background-color var(--zustand) var(--kurve),
+    box-shadow var(--zustand) var(--kurve);
+}
+.schalter-griff {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--rund-voll);
+  background: var(--text-3);
+  color: var(--gruen-tief);
+  display: grid;
+  place-items: center;
+  box-shadow:
+    0 2px 0 rgb(0 0 0 / 0.3),
+    0 4px 10px rgb(0 0 0 / 0.35);
+  transform: translateX(4px);
+  /* Feder mit Überschwinger: Spiel-Gefühl */
+  transition:
+    transform 380ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color var(--zustand) var(--kurve);
+}
+.schalter-griff .sym {
+  width: 16px;
+  height: 16px;
+  opacity: 0;
+  transition: opacity var(--zustand) var(--kurve);
+}
+.schalter:hover .schalter-griff {
+  background: var(--text-2);
+}
+.schalter input:checked + .schalter-spur {
+  background: var(--gruen);
+  box-shadow: inset 0 -3px 0 var(--gruen-tief);
+}
+.schalter input:checked + .schalter-spur .schalter-griff {
+  transform: translateX(28px);
+  background: #fff;
+}
+.schalter input:checked + .schalter-spur .schalter-griff .sym {
+  opacity: 1;
+}
+.schalter input:focus-visible + .schalter-spur {
+  outline: 3px solid var(--gelb);
+  outline-offset: 3px;
+}
+
+/* ---------- Regler ---------- */
+.regler {
+  display: grid;
+  gap: var(--abstand-1);
+}
+.regler-kopf {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--abstand-3);
+}
+.regler-wert {
+  font-family: var(--schrift-titel);
+  font-weight: 600;
+  color: var(--akzent-hell);
+}
+/* Wert anklicken = Zahl eintippen. */
+.regler-wert.tippbar {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  cursor: text;
+  border-bottom: 1px dashed color-mix(in srgb, var(--akzent-hell) 45%, transparent);
+}
+.regler-wert.tippbar:hover,
+.regler-wert.tippbar:focus-visible {
+  border-bottom-style: solid;
+  outline: none;
+}
+.regler-eingabe {
+  width: 7ch;
+  font-family: var(--schrift-titel);
+  font-weight: 600;
+  color: var(--akzent-hell);
+  text-align: right;
+  background: var(--flaeche-hoch, transparent);
+  border: 1px solid var(--akzent-hell);
+  border-radius: var(--rund-s, 6px);
+  padding: 0 var(--abstand-1);
+}
+.regler-flaeche {
+  position: relative;
+  height: 40px;
+  cursor: pointer;
+  touch-action: none;
+  outline: none;
+}
+.regler-spur,
+.regler-aktiv {
+  position: absolute;
+  top: 50%;
+  height: 14px;
+  translate: 0 -50%;
+  border-radius: var(--rund-voll);
+}
+.regler-spur {
+  left: 0;
+  right: 0;
+  background: var(--flaeche-1);
+  box-shadow: inset 0 3px 0 rgb(0 0 0 / 0.35);
+}
+.regler-aktiv {
+  background: var(--daemmerung-quer);
+  box-shadow: inset 0 2px 0 rgb(255 255 255 / 0.25);
+}
+.regler-mitte-punkt {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 22px;
+  border-radius: 2px;
+  background: var(--flaeche-4);
+  translate: -50% -50%;
+}
+.regler-griff {
+  position: absolute;
+  top: 50%;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--rund-voll);
+  background: #fff;
+  box-shadow:
+    inset 0 -4px 0 #c7d0ee,
+    0 3px 0 rgb(0 0 0 / 0.35);
+  translate: -50% -50%;
+  transition: scale 200ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.regler-flaeche:hover .regler-griff {
+  scale: 1.08;
+}
+.regler-flaeche.zieht .regler-griff {
+  scale: 1.18;
+}
+.regler-flaeche:focus-visible .regler-griff {
+  outline: 3px solid var(--gelb);
+  outline-offset: 3px;
+}
+.regler-blase {
+  position: absolute;
+  bottom: calc(100% + 2px);
+  translate: -50% 0;
+  scale: 0.5;
+  opacity: 0;
+  min-width: 44px;
+  padding: 6px 12px;
+  border-radius: var(--rund-s);
+  background: var(--gelb);
+  color: var(--gelb-text);
+  font-family: var(--schrift-titel);
+  font-weight: 600;
+  text-align: center;
+  pointer-events: none;
+  transition:
+    scale 260ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 150ms var(--kurve);
+}
+.regler-flaeche.zieht .regler-blase {
+  scale: 1;
+  opacity: 1;
+}
+
+/* ---------- Knopf-Gruppe (Segmente) ---------- */
+.segmente {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px;
+  border-radius: var(--rund-l);
+  background: var(--flaeche-1);
+  box-shadow: inset 0 3px 0 rgb(0 0 0 / 0.3);
+}
+.segment {
+  appearance: none;
+  border: 0;
+  font-family: var(--schrift-titel);
+  font-size: 14px;
+  font-weight: 600;
+  height: 38px;
+  padding: 0 var(--abstand-4);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  background: transparent;
+  color: var(--text-2);
+  border-radius: var(--rund-m);
+  transition:
+    background-color var(--zustand) var(--kurve),
+    color var(--zustand) var(--kurve),
+    transform 120ms var(--kurve);
+}
+.segment .sym {
+  width: 18px;
+  height: 18px;
+}
+.segment:hover {
+  color: var(--text);
+}
+.segment:active {
+  transform: scale(0.95);
+}
+.segment.gewaehlt {
+  background: var(--akzent);
+  color: #fff;
+  box-shadow:
+    inset 0 2px 0 rgb(255 255 255 / 0.22),
+    inset 0 -3px 0 var(--akzent-tief);
+}
+
+/* ---------- Felder ---------- */
+.feld {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+.feld-beschriftung {
+  color: var(--text-2);
+}
+.feld-hilfe {
+  color: var(--text-3);
+}
+.feld-hilfe.fehler {
+  color: var(--rot-hell);
+}
+.eingabe {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.eingabe select,
+.eingabe input {
+  appearance: none;
+  width: 100%;
+  height: 48px;
+  padding: 0 var(--abstand-4);
+  font: inherit;
+  font-size: 15px;
+  color: var(--text);
+  background: var(--flaeche-1);
+  border: 0;
+  border-radius: var(--rund-m);
+  box-shadow: inset 0 3px 0 rgb(0 0 0 / 0.3);
+  outline: none;
+  user-select: text;
+  transition: box-shadow var(--zustand) var(--kurve);
+}
+.eingabe input::placeholder {
+  color: var(--text-3);
+}
+.eingabe select {
+  padding-right: 44px;
+  cursor: pointer;
+  text-overflow: ellipsis;
+}
+.eingabe select option {
+  background: var(--flaeche-2);
+  color: var(--text);
+}
+.eingabe .sym {
+  position: absolute;
+  right: 12px;
+  pointer-events: none;
+  color: var(--akzent-hell);
+}
+.eingabe select:focus-visible,
+.eingabe input:focus-visible {
+  box-shadow:
+    inset 0 3px 0 rgb(0 0 0 / 0.3),
+    0 0 0 3px var(--akzent);
+}
+.eingabe.fehler select {
+  box-shadow:
+    inset 0 3px 0 rgb(0 0 0 / 0.3),
+    0 0 0 3px var(--rot);
+}
+
+/* ---------- Karten ---------- */
+.flaeche {
+  background: var(--flaeche-2);
+  border-radius: var(--rund-xl);
+  padding: var(--abstand-5);
+  display: grid;
+  gap: var(--abstand-4);
+  align-content: start;
+  box-shadow: var(--relief);
+}
+.flaeche-kopf {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--abstand-3);
+}
+.flaeche-kopf > div {
+  display: flex;
+  align-items: center;
+  gap: var(--abstand-3);
+}
+/* Symbol im Kopf: kleines Abzeichen mit Dämmerungs-Verlauf */
+.flaeche-kopf > div > .sym {
+  width: 36px;
+  height: 36px;
+  padding: 7px;
+  border-radius: var(--rund-s);
+  background: var(--daemmerung);
+  color: #fff;
+  box-shadow: inset 0 -3px 0 rgb(0 0 0 / 0.25);
+}
+.trenner {
+  height: 2px;
+  border-radius: 2px;
+  background: var(--flaeche-1);
+  margin: var(--abstand-1) 0;
+}
+
+.raster-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--abstand-4);
+}
+@media (max-width: 900px) {
+  .raster-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Chips und Abzeichen ---------- */
+.chip {
+  appearance: none;
+  border: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 var(--abstand-3);
+  border-radius: var(--rund-voll);
+  background: var(--flaeche-3);
+  color: var(--text-2);
+  font-family: var(--schrift-titel);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: var(--relief-flach);
+}
+.chip .sym {
+  width: 18px;
+  height: 18px;
+}
+.chip.gewaehlt {
+  background: var(--akzent);
+  color: #fff;
+}
+.chip.klein {
+  height: 26px;
+  padding: 0 10px;
+  font-size: 12px;
+}
+.chip.klein .sym {
+  width: 16px;
+  height: 16px;
+}
+.chip.warnung {
+  background: var(--rot);
+  color: #fff;
+}
+.chip.gelb {
+  background: var(--gelb);
+  color: var(--gelb-text);
+}
+button.chip {
+  cursor: pointer;
+  transition: transform 120ms var(--kurve);
+}
+button.chip:active {
+  transform: scale(0.94);
+}
+
+/* ---------- Pegel mit Empfindlichkeits-Linie ---------- */
+.pegel {
+  position: relative;
+  height: 48px;
+  cursor: ew-resize;
+  touch-action: none;
+  outline: none;
+}
+.pegel-spur {
+  position: absolute;
+  inset: 12px 0;
+  border-radius: var(--rund-voll);
+  background: var(--flaeche-1);
+  box-shadow: inset 0 3px 0 rgb(0 0 0 / 0.35);
+  overflow: hidden;
+}
+/* Segmente wie eine Spiel-Anzeige: Lücken alle 4 %. */
+.pegel-fuellung {
+  position: absolute;
+  inset: 0;
+  /* Abschneiden statt Stauchen: So bleibt Grün links und Orange rechts, wie
+     bei einer echten Pegel-Anzeige. */
+  clip-path: inset(0 calc(100% - var(--p, 0) * 100%) 0 0);
+  background: var(--flaeche-4);
+  transition: clip-path 90ms linear;
+  -webkit-mask: repeating-linear-gradient(90deg, #000 0 calc(4% - 3px), transparent calc(4% - 3px) 4%);
+  mask: repeating-linear-gradient(90deg, #000 0 calc(4% - 3px), transparent calc(4% - 3px) 4%);
+}
+.pegel-fuellung.offen {
+  background: linear-gradient(90deg, var(--gruen) 0%, var(--gruen) 55%, var(--gelb) 80%, var(--pfirsich) 100%);
+}
+.pegel-linie {
+  position: absolute;
+  top: 2px;
+  width: 8px;
+  height: 44px;
+  border-radius: 4px;
+  background: #fff;
+  translate: -50% 0;
+  box-shadow:
+    inset 0 -3px 0 #c7d0ee,
+    0 2px 0 rgb(0 0 0 / 0.35);
+}
+.pegel:focus-visible .pegel-linie {
+  outline: 3px solid var(--gelb);
+  outline-offset: 3px;
+}
+.pegel-skala {
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-3);
+}
+
+/* ---------- Meldung ---------- */
+.meldungen {
+  position: fixed;
+  left: 50%;
+  bottom: var(--abstand-5);
+  translate: -50% 0;
+  display: grid;
+  gap: var(--abstand-2);
+  z-index: 50;
+  width: min(560px, calc(100vw - 32px));
+}
+.meldung {
+  background: #fff;
+  color: #111a33;
+  border-radius: var(--rund-l);
+  padding: 14px var(--abstand-4);
+  display: flex;
+  gap: var(--abstand-3);
+  align-items: center;
+  font-weight: 600;
+  box-shadow:
+    inset 0 -4px 0 #dbe2fb,
+    0 6px 0 rgb(0 0 0 / 0.35);
+  animation: meldung-rein 520ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.meldung .sym {
+  color: var(--akzent);
+}
+@keyframes meldung-rein {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.9);
+  }
+}
+
+/* ---------- Hotkey-Feld ---------- */
+.hotkey {
+  appearance: none;
+  border: 0;
+  font: inherit;
+  min-width: 140px;
+  height: 44px;
+  padding: 0 var(--abstand-3);
+  border-radius: var(--rund-m);
+  background: var(--flaeche-1);
+  box-shadow: inset 0 3px 0 rgb(0 0 0 / 0.3);
+  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--abstand-2);
+  cursor: pointer;
+  transition: box-shadow var(--zustand) var(--kurve);
+}
+.hotkey > .sym {
+  width: 18px;
+  height: 18px;
+  color: var(--text-3);
+}
+.hotkey.leer {
+  color: var(--text-3);
+}
+.hotkey.lauscht {
+  box-shadow:
+    inset 0 3px 0 rgb(0 0 0 / 0.3),
+    0 0 0 3px var(--gelb);
+  color: var(--gelb);
+  animation: lauschen 1s ease-in-out infinite;
+}
+.hotkey.lauscht > .sym {
+  color: var(--gelb);
+}
+@keyframes lauschen {
+  50% {
+    box-shadow:
+      inset 0 3px 0 rgb(0 0 0 / 0.3),
+      0 0 0 6px rgb(250 204 21 / 0.35);
+  }
+}
+/* Tastenkappe: wie eine echte Taste, mit Unterkante */
+.taste-kappe {
+  display: inline-block;
+  min-width: 26px;
+  padding: 2px 8px 4px;
+  border-radius: 7px;
+  background: #fff;
+  color: #111a33;
+  font-family: var(--schrift-titel);
+  font-size: 13px;
+  font-weight: 650;
+  text-align: center;
+  box-shadow: inset 0 -3px 0 #a5b4fc;
+}
+
+/* ---------- Seitenblatt ---------- */
+.schleier {
+  position: fixed;
+  inset: 0;
+  background: rgb(3 6 15 / 0.6);
+  z-index: 40;
+  animation: schleier-rein var(--zustand) var(--kurve);
+}
+@keyframes schleier-rein {
+  from {
+    opacity: 0;
+  }
+}
+.seitenblatt {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  bottom: 12px;
+  width: min(400px, calc(100vw - 24px));
+  background: var(--flaeche-2);
+  border-radius: var(--rund-xl);
+  box-shadow: var(--relief);
+  padding: var(--abstand-5);
+  display: grid;
+  gap: var(--abstand-4);
+  align-content: start;
+  overflow-y: auto;
+  z-index: 41;
+  animation: blatt-rein var(--weg) var(--kurve);
+}
+@keyframes blatt-rein {
+  from {
+    transform: translateX(60px);
+    opacity: 0;
+  }
+}

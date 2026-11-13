@@ -1,0 +1,89 @@
+/* Design-Tokens „Arcade“, Stufe 2 „Dschungel-Nacht“ (Dan, 2026-10-14):
+   tiefes Nachtblau, Türkis-Schimmer wie Licht im Dschungel, kräftiges Blau für
+   Knöpfe, Limette als Spiel-Akzent, dicke 3D-Knöpfe wie in Mobile Games.
+   Text-Kombinationen ≥ 4.5:1. */
+
+:root {
+  color-scheme: dark;
+
+  /* Flächen: von hinten (dunkel) nach vorn (heller) */
+  --nacht: #060a17;
+  --flaeche-1: #0b1224;
+  --flaeche-2: #111a33;
+  --flaeche-3: #182445;
+  --flaeche-4: #22325c;
+  --kante: #2c3e72;
+
+  /* Text */
+  --text: #eef2ff;
+  --text-2: #b6c2e6;
+  --text-3: #8290bb;
+
+  /* Akzente */
+  --akzent: #5b5ff5;
+  --akzent-hell: #a5b4fc;
+  --akzent-tief: #3c3fc4;
+  --akzent-rand: #191b66;
+  --tuerkis: #22d3ee;
+  --pink: #ec4899;
+  --pfirsich: #fb923c;
+  --gruen: #84cc16;
+  --gruen-tief: #4d7c0f;
+  --gruen-rand: #1a2e05;
+  --gelb: #facc15;
+  --gelb-text: #422006;
+  --rot: #ef4444;
+  --rot-tief: #b91c1c;
+  --rot-rand: #450a0a;
+  --rot-hell: #fecaca;
+
+  /* Leitverlauf: Blau → Violett → Pink (Knopf-Abzeichen, Regler, Marke) */
+  --daemmerung: linear-gradient(160deg, #5b5ff5 0%, #8b5cf6 55%, #ec4899 100%);
+  --daemmerung-quer: linear-gradient(90deg, #22d3ee 0%, #5b5ff5 55%, #8b5cf6 100%);
+
+  /* 3D: helle Oberkante, dunkle Unterkante (Karten) */
+  --relief: inset 0 2px 0 rgb(255 255 255 / 0.07), inset 0 -5px 0 rgb(0 0 0 / 0.32);
+  --relief-flach: inset 0 1px 0 rgb(255 255 255 / 0.06), inset 0 -3px 0 rgb(0 0 0 / 0.28);
+
+  /* Formen */
+  --rund-s: 10px;
+  --rund-m: 14px;
+  --rund-l: 20px;
+  --rund-xl: 28px;
+  --rund-voll: 999px;
+
+  /* Abstände (4er-Raster) */
+  --abstand-1: 4px;
+  --abstand-2: 8px;
+  --abstand-3: 12px;
+  --abstand-4: 16px;
+  --abstand-5: 24px;
+  --abstand-6: 32px;
+  --abstand-7: 48px;
+
+  /* Bewegung: eine Kurve für alle Wege. Drücken und Auswählen „ploppen“ mit
+     eigener Federung (Keyframes), das ist das Spiel-Gefühl. */
+  --kurve: cubic-bezier(0.16, 1, 0.3, 1);
+  --zustand: 300ms;
+  --weg: 650ms;
+  --auftritt: 950ms;
+  --staffel: 70ms;
+
+  --schrift-titel: "Fredoka Variable", "Segoe UI Variable Display", sans-serif;
+  --schrift: "Figtree Variable", "Segoe UI Variable Text", sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --zustand: 0ms;
+    --weg: 0ms;
+    --auftritt: 0ms;
+    --staffel: 0ms;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

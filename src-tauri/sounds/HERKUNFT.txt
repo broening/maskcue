@@ -1,0 +1,20 @@
+Start-Sounds (Kategorie „Sound-Effects“)
+
+Kommen mit dem Installer. Bei einer neuen Installation kopiert die App sie
+nach %APPDATA%\GlottiX\sounds\start und trägt sie ein.
+
+Alle Dateien sind von Wikimedia Commons, geladen am 01.11.2026, unverändert.
+Lizenz: CC0 1.0 oder gemeinfrei (Public Domain). Keine Namensnennung nötig,
+Weitergabe erlaubt.
+
+Datei               Name           Lizenz       Urheber              Quelle
+applaus.ogg         Applaus        gemeinfrei   thore                https://commons.wikimedia.org/wiki/File:Applause_ii.ogg
+jubel.ogg           Jubel          gemeinfrei   starlite             https://commons.wikimedia.org/wiki/File:Hurray.ogg
+lachen.ogg          Lachen         CC0 1.0      JohnsonBrandEditing  https://commons.wikimedia.org/wiki/File:Cartoon_Laugh.ogg
+staunen.ogg         Staunen        gemeinfrei   starlite             https://commons.wikimedia.org/wiki/File:Ohhh_ahhh.ogg
+trommelwirbel.ogg   Trommelwirbel  CC0 1.0      Iwan Sounds and DIY  https://commons.wikimedia.org/wiki/File:Drum_Roll_Intro.ogg
+gong.ogg            Gong           CC0 1.0      pdsounds.org         https://commons.wikimedia.org/wiki/File:Gong_or_bell_vibrant_(short).ogg
+buzzer.ogg          Falsch         gemeinfrei   BlastOButter42       https://commons.wikimedia.org/wiki/File:Buzzer.ogg
+klopfen.ogg         Klopfen        gemeinfrei   stephan              https://commons.wikimedia.org/wiki/File:Knocking_on_wood_or_door.ogg
+kasse.ogg           Kasse          gemeinfrei   unbekannt            https://commons.wikimedia.org/wiki/File:Cash_register.ogg
+explosion.ogg       Explosion      gemeinfrei   tcpp                 https://commons.wikimedia.org/wiki/File:Explosion_10.ogg

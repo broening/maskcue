@@ -1,0 +1,52 @@
+{
+  "figuren": [
+    { "name": "Opa", "halbtoene": -4, "formant": -3 },
+    { "name": "Dämon", "halbtoene": -7, "formant": -4 },
+    { "name": "Kobold", "halbtoene": 5, "formant": 4 }
+  ],
+  "global": [
+    { "taste": "Pause", "aktion": "AllesStopp" },
+    { "taste": "Strg+Alt+1", "aktion": { "Profil": "FiveM" } },
+    { "taste": "Strg+Alt+0", "aktion": "ProfilAutomatisch" }
+  ],
+  "profile": [
+    {
+      "name": "FiveM",
+      "programme": ["FiveM*.exe"],
+      "belegungen": [
+        { "taste": "Num1", "aktion": { "Sound": "Wind.wav" } },
+        { "taste": "Num2", "aktion": { "Sound": "Kirchenglocken.wav" } },
+        { "taste": "Num3", "aktion": { "Sound": "Geister rufen.wav" } },
+        { "taste": "Num7", "aktion": { "Figur": "Opa" } },
+        { "taste": "Num8", "aktion": { "Figur": "Dämon" } },
+        { "taste": "Num9", "aktion": { "Figur": "Kobold" } },
+        { "taste": "Num0", "aktion": "FigurAus" },
+        { "taste": "Maus4", "aktion": { "Figur": "Opa" } },
+        { "taste": "Maus5", "aktion": "FigurAus" }
+      ]
+    },
+    {
+      "name": "RedM",
+      "programme": ["RedM*.exe"],
+      "belegungen": [
+        { "taste": "Num1", "aktion": { "Sound": "Kirchenglocken.wav" } },
+        { "taste": "Num7", "aktion": { "Figur": "Opa" } },
+        { "taste": "Num0", "aktion": "FigurAus" }
+      ]
+    },
+    {
+      "name": "Test im Editor",
+      "programme": ["notepad.exe"],
+      "belegungen": [
+        { "taste": "Num1", "aktion": { "Sound": "Wind.wav" } },
+        { "taste": "Num2", "aktion": { "Sound": "Engel Segen.wav" } },
+        { "taste": "Strg+Num2", "aktion": { "Sound": "Erdbebeben.wav" } },
+        { "taste": "Num7", "aktion": { "Figur": "Opa" } },
+        { "taste": "Num8", "aktion": { "Figur": "Kobold" } },
+        { "taste": "Num0", "aktion": "FigurAus" },
+        { "taste": "Maus4", "aktion": { "Figur": "Dämon" } },
+        { "taste": "Maus5", "aktion": "FigurAus" }
+      ]
+    }
+  ]
+}

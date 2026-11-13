@@ -5,9 +5,9 @@
 Free voice changer and soundboard for Windows. Made for streamers and role
 players, for example on FiveM and RedM.
 
-**[⬇ Download MaskCue](https://github.com/broening/maskcue/releases/latest)** · Version 0.1.4 · [maskcue.com](https://maskcue.com/en/) · [Discord](https://discord.gg/yhBvJD6Wa)
+**[⬇ Download MaskCue](https://github.com/broening/maskcue/releases/latest)** · Version 0.1.5 · [maskcue.com](https://maskcue.com/en/) · [Discord](https://discord.gg/yhBvJD6Wa)
 
-> Version 0.1.4 is an early test version. There may still be bugs.
+> Version 0.1.5 is an early test version. There may still be bugs.
 > Report them on Discord or under [Issues](https://github.com/broening/maskcue/issues).
 
 ## What MaskCue does
@@ -45,7 +45,7 @@ players, for example on FiveM and RedM.
 
 ## Install
 
-1. Download `MaskCue_0.1.4_x64-setup.exe` from the
+1. Download `MaskCue_0.1.5_x64-setup.exe` from the
    [download page](https://github.com/broening/maskcue/releases/latest).
 2. Run the file.
 3. Windows may show “Windows protected your PC”. This happens because the
@@ -56,7 +56,7 @@ players, for example on FiveM and RedM.
 page. In PowerShell:
 
 ```text
-Get-FileHash .\MaskCue_0.1.4_x64-setup.exe -Algorithm SHA256
+Get-FileHash .\MaskCue_0.1.5_x64-setup.exe -Algorithm SHA256
 ```
 
 ## AI voice
@@ -98,11 +98,28 @@ set to automatic, notify only or off (Settings → General → Updates).
 ## License
 
 MaskCue is licensed under the GPL-3.0, see [LICENSE](LICENSE). You can get
-the source code on request via [Issues](https://github.com/broening/maskcue/issues).
+the source code right here in this repository.
 
 Components used include: Tauri (MIT/Apache-2.0), DeepFilterNet
 (MIT/Apache-2.0), the RNNoise port nnnoiseless (BSD-3-Clause), Signalsmith
 Stretch (MIT), Symphonia (MPL-2.0), cpal (Apache-2.0).
+
+## Build from source
+
+You need Windows, Rust (MSVC), Node.js 24, pnpm and the Visual Studio Build
+Tools (C++).
+
+```text
+pnpm install
+pnpm tauri dev
+```
+
+The installer is built with `pnpm tauri build`. GitHub Actions builds every
+release from this repository, see [build.yml](.github/workflows/build.yml).
+
+## Code signing policy
+
+See [CODE_SIGNING.md](CODE_SIGNING.md).
 
 ## Changes
 

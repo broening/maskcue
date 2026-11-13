@@ -1,0 +1,77 @@
+[package]
+name = "maskcue"
+version = "0.1.5"
+description = "Voice-Changer und Soundboard für Streamer und RP-Spieler"
+authors = ["Dan"]
+license = "GPL-3.0-only"
+edition = "2024"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+# The `_lib` suffix may seem redundant but it is necessary
+# to make the lib name unique and wouldn't conflict with the bin name.
+# This seems to be only an issue on Windows, see https://github.com/rust-lang/cargo/issues/8519
+name = "maskcue_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+cc = "1"
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["tray-icon", "protocol-asset"] }
+tauri-plugin-dialog = "2"
+tauri-plugin-single-instance = "2"
+tauri-plugin-opener = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+cpal = "0.18.2"
+rtrb = "0.4.0"
+windows = { version = "0.62.2", features = ["Win32_Media_Audio", "Win32_System_Com", "Win32_Foundation", "Win32_Devices_Properties", "Win32_Devices_DeviceAndDriverInstallation", "Win32_UI_Shell_PropertiesSystem", "Win32_System_Com_StructuredStorage", "Win32_System_Variant", "Win32_Devices_FunctionDiscovery", "Win32_System_Threading", "Win32_System_Performance", "Win32_Security", "Win32_UI_WindowsAndMessaging", "Win32_UI_Input_KeyboardAndMouse", "Win32_System_LibraryLoader"] }
+deep_filter = { git = "https://github.com/Rikorose/DeepFilterNet", rev = "d375b2d8309e0935d165700c91da9de862a99c31", default-features = false, features = ["tract"] }
+# DeepFilterNet wurde mit tract 0.21.4 gebaut. Neuere 0.21.x nutzen ndarray 0.16
+# und brechen den Build. Darum hier fest auf 0.21.4.
+tract-core = "=0.21.4"
+tract-onnx = "=0.21.4"
+tract-pulse = "=0.21.4"
+tract-hir = "=0.21.4"
+ndarray = "0.15"
+# Denoise „Leicht“: RNNoise als reine Rust-Portierung (BSD-3-Clause), Modell ist eingebaut.
+nnnoiseless = { version = "0.5.2", default-features = false }
+symphonia = { version = "0.6.1", default-features = false, features = ["mp3", "flac", "ogg", "vorbis", "wav", "pcm", "opt-simd"] }
+rubato = "0.14.1"
+# KI-Stimme (Beatrice 2): FFT und Modell-Beschreibung.
+realfft = "3.5"
+toml = "0.8"
+zip = { version = "9.0.3", default-features = false, features = ["deflate-flate2-zlib-rs"] }
+tauri-plugin-clipboard-manager = "2"
+# Mit Windows starten (Eintrag unter HKCU\...\Run, Dan 01.11.2026).
+tauri-plugin-autostart = "2"
+# Updates aus den GitHub-Releases, signiert (Dan 01.11.2026).
+tauri-plugin-updater = "2"
+# KI-Stimmen laden (Dan, 01.11.2026: nicht mehr im Installer) und prüfen.
+ureq = "3"
+sha2 = "0.10"
+
+
+# Beim Entwickeln (pnpm tauri dev): Bibliotheken optimiert, sonst sind
+# DeepFilterNet und Rubato zu langsam für Echtzeit.
+# Ohne Prüfungen für Bibliotheken: Mit debug-assertions bricht tract beim
+# Laden des Denoise-Modells ab („running pass codegen“, nachgestellt mit
+# `cargo run --example denoise_test`).
+[profile.dev.package."*"]
+opt-level = 3
+debug-assertions = false
+overflow-checks = false
+
+[profile.dev]
+opt-level = 1
+
+# Read the optimization guideline for more details: https://tauri.app/concept/size/#cargo-configuration
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = 3
+panic = "abort"
+strip = true

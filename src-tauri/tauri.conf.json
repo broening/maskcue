@@ -1,0 +1,66 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "MaskCue",
+  "version": "0.1.5",
+  "identifier": "com.danenso.glottix",
+  "build": {
+    "beforeDevCommand": "pnpm dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "pnpm build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "title": "MaskCue",
+        "width": 1100,
+        "height": 720,
+        "minWidth": 800,
+        "minHeight": 560,
+        "visible": false
+      }
+    ],
+    "security": {
+      "csp": null,
+      "assetProtocol": {
+        "enable": true,
+        "scope": [
+          "$DATA/MaskCue/bilder/**",
+          "$DATA/GlottiX/bilder/**"
+        ]
+      }
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": [
+      "nsis"
+    ],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.ico"
+    ],
+    "license": "GPL-3.0-only",
+    "resources": {
+      "modelle/DeepFilterNet3_onnx.tar.gz": "modelle/DeepFilterNet3_onnx.tar.gz",
+      "modelle/DeepFilterNet-LICENSE-APACHE": "modelle/DeepFilterNet-LICENSE-APACHE",
+      "modelle/DeepFilterNet-LICENSE-MIT": "modelle/DeepFilterNet-LICENSE-MIT",
+      "sounds/": "sounds/"
+    },
+    "createUpdaterArtifacts": true
+  },
+  "plugins": {
+    "updater": {
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEU5RTRFQjlGRUY5ODAwNjcKUldSbkFKanZuK3ZrNlpiaUE5Y0k0WFE1T0pPRnZpQ0gvdkhpeFJTdWhrZXh0L1pmdm9jV0pzZHEK",
+      "endpoints": [
+        "https://github.com/broening/maskcue/releases/latest/download/latest.json"
+      ],
+      "windows": {
+        "installMode": "passive"
+      }
+    }
+  }
+}

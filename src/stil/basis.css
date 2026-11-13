@@ -1,0 +1,234 @@
+/* Grundlagen: Schrift-Stufen, Nachthimmel, Rahmen der App. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: var(--nacht);
+  color: var(--text);
+  font-family: var(--schrift);
+  font-size: 14px;
+  line-height: 20px;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+  overflow: hidden;
+}
+
+::selection {
+  background: var(--akzent);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--flaeche-4);
+  border-radius: var(--rund-voll);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+:focus-visible {
+  outline: 3px solid var(--gelb);
+  outline-offset: 3px;
+}
+
+/* Schrift-Stufen. Titel in Fredoka (rund, verspielt), Text in Figtree. */
+.titel-xl,
+.titel-l,
+.titel-m,
+.titel-s {
+  font-family: var(--schrift-titel);
+  letter-spacing: -0.2px;
+}
+.titel-xl {
+  font-size: 40px;
+  line-height: 44px;
+  font-weight: 650;
+}
+.titel-l {
+  font-size: 26px;
+  line-height: 32px;
+  font-weight: 620;
+}
+.titel-m {
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 600;
+}
+.titel-s {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 600;
+}
+.text-l {
+  font-size: 16px;
+  line-height: 24px;
+}
+.text-m {
+  font-size: 14px;
+  line-height: 20px;
+}
+.text-s {
+  font-size: 12px;
+  line-height: 16px;
+}
+.etikett {
+  font-family: var(--schrift-titel);
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+.zahl {
+  font-variant-numeric: tabular-nums;
+}
+.leise {
+  color: var(--text-2);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+/* `hidden` gilt immer, auch wenn ein Baustein selbst `display` setzt
+   (sonst blieb z. B. das Gerätefeld der Klick-Töne sichtbar). */
+[hidden] {
+  display: none !important;
+}
+
+/* App-Rahmen: Leiste links, Inhalt rechts. Hinter allem der Nachthimmel. */
+.app {
+  position: relative;
+  display: grid;
+  grid-template-columns: 104px 1fr;
+  height: 100dvh;
+  isolation: isolate;
+}
+
+.himmel {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  /* Dschungel-Nacht: Türkis-Schimmer oben, Blau-Violett unten, dunkle Mitte */
+  background:
+    radial-gradient(70% 55% at 85% -5%, rgb(34 211 238 / 0.18), transparent 60%),
+    radial-gradient(90% 60% at 10% 110%, rgb(91 95 245 / 0.28), transparent 60%),
+    radial-gradient(60% 45% at 95% 100%, rgb(132 204 22 / 0.1), transparent 60%),
+    var(--nacht);
+}
+.himmel svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.stern {
+  fill: #fff;
+  animation: funkeln 4s ease-in-out infinite alternate;
+}
+@keyframes funkeln {
+  from {
+    opacity: 0.25;
+  }
+  to {
+    opacity: 0.9;
+  }
+}
+.schnuppe {
+  position: absolute;
+  width: 140px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, #fff);
+  opacity: 0;
+  /* Gleicher Winkel wie die Flugbahn unten (138/260 ≈ 28°), Kopf (weiß) vorn.
+     Vorher -28°: Der Schweif zeigte nach oben, der Komet flog nach unten. */
+  transform: rotate(28deg);
+  animation: schnuppe 9s linear infinite;
+}
+@keyframes schnuppe {
+  0%,
+  88% {
+    opacity: 0;
+    translate: 0 0;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    translate: 260px 138px;
+  }
+}
+
+.inhalt {
+  overflow-y: auto;
+  padding: 0 var(--abstand-6) var(--abstand-7);
+}
+
+.seite {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  gap: var(--abstand-5);
+}
+
+/* Auftritt: Kinder steigen gestaffelt auf (--i setzt die Reihenfolge).
+   Jede Seite tritt so auf, Listen darin zusätzlich Stück für Stück. */
+.seite > *,
+.auftritt > * {
+  animation: aufsteigen var(--auftritt) var(--kurve) both;
+  animation-delay: calc(var(--i, 0) * var(--staffel));
+}
+/* Nach dem Auftritt: Animation weg, sonst spielt sie neu, sobald eine andere
+   Animation (Pochen, Hüpfen) endet. Die Klasse setzt main.ts. */
+.seite > .da,
+.auftritt > .da {
+  animation: none;
+}
+@keyframes aufsteigen {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+}
+
+.seiten-kopf {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--abstand-4);
+  flex-wrap: wrap;
+}
+.seiten-kopf p {
+  margin-top: var(--abstand-2);
+  max-width: 60ch;
+}
+
+.seite > :nth-child(2),
+.auftritt > :nth-child(2) { --i: 1; }
+.seite > :nth-child(3),
+.auftritt > :nth-child(3) { --i: 2; }
+.seite > :nth-child(4),
+.auftritt > :nth-child(4) { --i: 3; }
+.seite > :nth-child(5),
+.auftritt > :nth-child(5) { --i: 4; }
+.auftritt > :nth-child(6) { --i: 5; }
+.auftritt > :nth-child(7) { --i: 6; }
+.auftritt > :nth-child(8) { --i: 7; }
+.auftritt > :nth-child(n + 9) { --i: 8; }

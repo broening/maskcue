@@ -1,0 +1,16 @@
+KI-Stimmen in MaskCue (Beatrice 2, auf dem Prozessor)
+
+Thorsten  (Ordner thorsten)
+  Stimme:  Thorsten-Voice, Datensatz von Thorsten Müller, CC0 1.0
+           https://www.thorsten-voice.de
+
+Das Modell wurde für MaskCue trainiert (21.10.2026):
+  Trainer und Vortraining: Project Beatrice, Beatrice 2 (MIT-Lizenz),
+           Vortraining auf LibriTTS-R (CC BY 4.0)
+           https://huggingface.co/fierce-cats/beatrice-trainer
+  Laut-Erkennung: nachtrainiert auf Multilingual LibriSpeech Deutsch
+           (CC BY 4.0, Pratap et al., 2020) mit Lautschrift aus eSpeak NG.
+
+Seit 01.11.2026 nicht mehr im Installer. Der Spieler lädt die Stimme in
+MaskCue (Figuren, KI-Stimme), nachdem er den Regeln zugestimmt hat.
+Pakete bauen: python ki-werkzeuge/stimmen_pakete.py

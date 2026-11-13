@@ -5,9 +5,9 @@
 Kostenloser Voice-Changer und Soundboard für Windows. Gemacht für Streamer und
 Rollenspieler, zum Beispiel auf FiveM und RedM.
 
-**[⬇ MaskCue herunterladen](https://github.com/broening/maskcue/releases/latest)** · Version 0.1.4 · [maskcue.com](https://maskcue.com) · [Discord](https://discord.gg/yhBvJD6Wa)
+**[⬇ MaskCue herunterladen](https://github.com/broening/maskcue/releases/latest)** · Version 0.1.5 · [maskcue.com](https://maskcue.com) · [Discord](https://discord.gg/yhBvJD6Wa)
 
-> Version 0.1.4 ist eine frühe Testversion. Es kann noch Fehler geben.
+> Version 0.1.5 ist eine frühe Testversion. Es kann noch Fehler geben.
 > Fehler meldest du im Discord oder unter [Issues](https://github.com/broening/maskcue/issues).
 
 ## Was MaskCue kann
@@ -45,7 +45,7 @@ Rollenspieler, zum Beispiel auf FiveM und RedM.
 
 ## Installieren
 
-1. Lade `MaskCue_0.1.4_x64-setup.exe` von der
+1. Lade `MaskCue_0.1.5_x64-setup.exe` von der
    [Download-Seite](https://github.com/broening/maskcue/releases/latest).
 2. Starte die Datei.
 3. Windows zeigt vielleicht „Der Computer wurde durch Windows geschützt“.
@@ -57,7 +57,7 @@ Rollenspieler, zum Beispiel auf FiveM und RedM.
 Download-Seite. In PowerShell:
 
 ```text
-Get-FileHash .\MaskCue_0.1.4_x64-setup.exe -Algorithm SHA256
+Get-FileHash .\MaskCue_0.1.5_x64-setup.exe -Algorithm SHA256
 ```
 
 ## KI-Stimme
@@ -100,12 +100,29 @@ aus (Einstellungen → Allgemein → Updates).
 
 ## Lizenz
 
-MaskCue steht unter der GPL-3.0, siehe [LICENSE](LICENSE). Den Quellcode
-bekommst du auf Anfrage über [Issues](https://github.com/broening/maskcue/issues).
+MaskCue steht unter der GPL-3.0, siehe [LICENSE](LICENSE). Der Quellcode
+liegt hier in diesem Repository.
 
 Verwendete Bausteine, unter anderem: Tauri (MIT/Apache-2.0), DeepFilterNet
 (MIT/Apache-2.0), RNNoise-Portierung nnnoiseless (BSD-3-Clause), Signalsmith
 Stretch (MIT), Symphonia (MPL-2.0), cpal (Apache-2.0).
+
+## Selbst bauen
+
+Du brauchst Windows, Rust (MSVC), Node.js 24, pnpm und die Visual Studio
+Build Tools (C++).
+
+```text
+pnpm install
+pnpm tauri dev
+```
+
+Den Installer baut `pnpm tauri build`. Jedes Release baut GitHub Actions aus
+diesem Repository, siehe [build.yml](.github/workflows/build.yml).
+
+## Code signing policy
+
+Richtlinie zum Signieren: [CODE_SIGNING.md](CODE_SIGNING.md#richtlinie-zum-signieren).
 
 ## Änderungen
 

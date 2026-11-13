@@ -1,0 +1,20 @@
+[model]
+version = "2.0.0-rc.0"
+name = "Thorsten"
+description = """
+No description for this model.
+このモデルの説明はありません。
+"""
+
+[voice.0]
+name = "de_thorsten"
+description = """
+No description for this voice.
+この声の説明はありません。
+"""
+average_pitch = 47.0
+
+[voice.0.portrait]
+path = "noimage.png"
+description = """
+"""

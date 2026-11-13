@@ -1,0 +1,68 @@
+[
+  {
+    "name": "Signalsmith Stretch",
+    "lizenz": "MIT",
+    "urheber": "Signalsmith Audio",
+    "quelle": "https://github.com/Signalsmith-Audio/signalsmith-stretch",
+    "art": "cpp",
+    "textDateien": ["src-tauri/cpp/signalsmith-stretch/LICENSE.txt"]
+  },
+  {
+    "name": "Signalsmith Linear",
+    "lizenz": "MIT",
+    "urheber": "Signalsmith Audio",
+    "quelle": "https://github.com/Signalsmith-Audio/linear",
+    "art": "cpp",
+    "textDateien": ["src-tauri/cpp/signalsmith-linear/LICENSE.txt"]
+  },
+  {
+    "name": "DeepFilterNet3 (Modell)",
+    "lizenz": "MIT OR Apache-2.0",
+    "urheber": "Hendrik Schröter",
+    "quelle": "https://github.com/Rikorose/DeepFilterNet",
+    "art": "modell",
+    "textDateien": ["src-tauri/modelle/DeepFilterNet-LICENSE-MIT", "src-tauri/modelle/DeepFilterNet-LICENSE-APACHE"]
+  },
+  {
+    "name": "Beatrice 2 (Trainer, vortrainierte Modelle)",
+    "lizenz": "MIT",
+    "urheber": "Project Beatrice",
+    "quelle": "https://huggingface.co/fierce-cats/beatrice-trainer",
+    "art": "modell",
+    "textDateien": ["scripts/lizenztexte/beatrice-LICENSE.txt"]
+  },
+  {
+    "name": "LibriTTS-R (Vortraining)",
+    "lizenz": "CC BY 4.0",
+    "lizenzUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "urheber": "Koizumi et al., 2023",
+    "quelle": "https://www.openslr.org/141/",
+    "art": "modell"
+  },
+  {
+    "name": "Multilingual LibriSpeech, Deutsch (Laut-Erkennung)",
+    "lizenz": "CC BY 4.0",
+    "lizenzUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "urheber": "Pratap et al., 2020",
+    "quelle": "https://www.openslr.org/94/",
+    "art": "modell"
+  },
+  {
+    "name": "Thorsten-Voice",
+    "lizenz": "CC0 1.0",
+    "lizenzUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "urheber": "Thorsten Müller",
+    "quelle": "https://www.thorsten-voice.de",
+    "art": "stimme"
+  },
+  { "name": "Applaus (Applause_ii.ogg)", "lizenz": "Public Domain", "lizenzUrl": "https://creativecommons.org/publicdomain/mark/1.0/", "urheber": "thore", "quelle": "https://commons.wikimedia.org/wiki/File:Applause_ii.ogg", "art": "sound" },
+  { "name": "Jubel (Hurray.ogg)", "lizenz": "Public Domain", "lizenzUrl": "https://creativecommons.org/publicdomain/mark/1.0/", "urheber": "starlite", "quelle": "https://commons.wikimedia.org/wiki/File:Hurray.ogg", "art": "sound" },
+  { "name": "Lachen (Cartoon_Laugh.ogg)", "lizenz": "CC0 1.0", "lizenzUrl": "https://creativecommons.org/publicdomain/zero/1.0/", "urheber": "JohnsonBrandEditing", "quelle": "https://commons.wikimedia.org/wiki/File:Cartoon_Laugh.ogg", "art": "sound" },
+  { "name": "Staunen (Ohhh_ahhh.ogg)", "lizenz": "Public Domain", "lizenzUrl": "https://creativecommons.org/publicdomain/mark/1.0/", "urheber": "starlite", "quelle": "https://commons.wikimedia.org/wiki/File:Ohhh_ahhh.ogg", "art": "sound" },
+  { "name": "Trommelwirbel (Drum_Roll_Intro.ogg)", "lizenz": "CC0 1.0", "lizenzUrl": "https://creativecommons.org/publicdomain/zero/1.0/", "urheber": "Iwan Sounds and DIY", "quelle": "https://commons.wikimedia.org/wiki/File:Drum_Roll_Intro.ogg", "art": "sound" },
+  { "name": "Gong (Gong_or_bell_vibrant_(short).ogg)", "lizenz": "CC0 1.0", "lizenzUrl": "https://creativecommons.org/publicdomain/zero/1.0/", "urheber": "pdsounds.org", "quelle": "https://commons.wikimedia.org/wiki/File:Gong_or_bell_vibrant_(short).ogg", "art": "sound" },
+  { "name": "Falsch (Buzzer.ogg)", "lizenz": "Public Domain", "lizenzUrl": "https://creativecommons.org/publicdomain/mark/1.0/", "urheber": "BlastOButter42", "quelle": "https://commons.wikimedia.org/wiki/File:Buzzer.ogg", "art": "sound" },
+  { "name": "Klopfen (Knocking_on_wood_or_door.ogg)", "lizenz": "Public Domain", "lizenzUrl": "https://creativecommons.org/publicdomain/mark/1.0/", "urheber": "stephan", "quelle": "https://commons.wikimedia.org/wiki/File:Knocking_on_wood_or_door.ogg", "art": "sound" },
+  { "name": "Kasse (Cash_register.ogg)", "lizenz": "Public Domain", "lizenzUrl": "https://creativecommons.org/publicdomain/mark/1.0/", "quelle": "https://commons.wikimedia.org/wiki/File:Cash_register.ogg", "art": "sound" },
+  { "name": "Explosion (Explosion_10.ogg)", "lizenz": "Public Domain", "lizenzUrl": "https://creativecommons.org/publicdomain/mark/1.0/", "urheber": "tcpp", "quelle": "https://commons.wikimedia.org/wiki/File:Explosion_10.ogg", "art": "sound" }
+]

@@ -1,0 +1,42 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Mitschnitte (eigene Stimme, nicht ins Repo)
+aufnahmen/
+
+# Original-PNGs der KI-Bilder (gross), nur lokal
+kunst/avatare-roh/*.png
+
+# Python-Zwischendateien
+__pycache__/
+
+# Gepackte KI-Stimmen zum Hochladen (ki-werkzeuge/stimmen_pakete.py)
+ki-werkzeuge/pakete/
+
+# Erzeugt für jedes Release (veroeffentlichung/latest_json.py)
+veroeffentlichung/latest.json
+
+# graphify
+graphify-out/
