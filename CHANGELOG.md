@@ -2,6 +2,18 @@
 
 **English** | [Deutsch](CHANGELOG.de.md)
 
+## 0.1.5 – 2026-11-13
+
+- Safer import of **settings backups**: sounds from a backup without sound
+  files keep only local paths (like `C:\...`). Network paths are removed.
+  Numbers outside the range of the sliders are corrected, so the settings no
+  longer get lost on the next start.
+- **Sound files** with a broken sample rate or too many channels no longer
+  crash MaskCue. They show an error instead. Supported: 8 to 192 kHz.
+- **Exports** only take files that really are sounds.
+- The **bug report** no longer contains file paths (they often hold your
+  Windows user name).
+
 ## 0.1.4 – 2026-11-02
 
 - New: **Updates** (Settings → General → Updates). Choose **Automatic**
