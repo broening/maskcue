@@ -19,12 +19,31 @@
     person_profiles: "identified_only",
     autocapture: false,
     capture_pageview: true,
-    capture_pageleave: true,
+    // Datensparsam: kein Verlassen-Ereignis (Verweildauer, Scrolltiefe),
+    // keine Kampagnen-Parameter, keine Feature-Flags (die senden die ganze
+    // Adresse mit). Siehe datenschutz.html.
+    capture_pageleave: false,
+    save_campaign_params: false,
+    advanced_disable_flags: true,
     disable_session_recording: true,
     disable_surveys: true,
     capture_dead_clicks: false,
     capture_performance: false,
-    enable_heatmaps: false
+    enable_heatmaps: false,
+    // „Statistik ausschalten“ gilt sofort, auch auf dieser Seite und in
+    // anderen offenen Tabs. posthog.opt_out_capturing() tut im cookieless
+    // mode nichts, darum wird jedes Ereignis vor dem Senden geprüft.
+    before_send: function (ereignis) {
+      try { if (localStorage.getItem(AUS) === "1") return null; } catch (e) {}
+      // Adressen ohne ?… und #…: Dort können Namen, E-Mails oder Codes stehen.
+      var p = ereignis.properties || {};
+      ["$current_url", "$referrer"].forEach(function (k) {
+        if (typeof p[k] === "string" && p[k].indexOf("http") === 0) {
+          try { var u = new URL(p[k]); p[k] = u.origin + u.pathname; } catch (e) {}
+        }
+      });
+      return ereignis;
+    }
     // „Do Not Track“ und „Global Privacy Control“ prüft dieses Skript oben
     // selbst. PostHogs eigenes respect_dnt schaltet im cookieless mode alles ab.
   });
